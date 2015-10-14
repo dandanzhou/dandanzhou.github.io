@@ -9,9 +9,9 @@
     <meta name="description" content="前端开发工程师一枚！">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>我的第一篇博文 - Daisydan</title>
+    <title>jquery  parent()、parents()、closest()的区别 - Daisydan</title>
 
-    <link rel="canonical" href="https://dandanzhou.github.io/2015/10/01/my-first-blog/">
+    <link rel="canonical" href="https://dandanzhou.github.io/2015/10/02/my-second-blog/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -128,12 +128,12 @@
                         <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
                     </div>
-                    <h1>我的第一篇博文</h1>
+                    <h1>jquery  parent()、parents()、closest()的区别</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Daisydan on October 1, 2015</span>
+                    <span class="meta">Posted by Daisydan on October 2, 2015</span>
                 </div>
             </div>
         </div>
@@ -146,8 +146,15 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
 
-				<p>这是我的第一篇博文</p>
+				<p><img src="/img/pic-1.png" alt="" /></p>
 
+<h2 id="section">区别</h2>
+
+<p>1.parent()方法从指定类型的直接父节点开始查找，在”0”中，<a>的直接父节点是&lt;li&gt;所以在这里找不到&lt;ul&gt;父节点。在”2”中先找到了&lt;li&gt;，接着找到&lt;ul&gt;，并将它的背景色设置为yellow。parent()返回一个节点。</a></p>
+
+<p>2.parents()方法查找方式同parent()方法类似，不同的一点在于，当它找到第一的父节点时并没有停止查找，而是继续查找，最后返回多个父节点，如在”2”中，使得id为menu的ul整个背景色变成了yellow。</p>
+
+<p>3.closest()方法查找时从包含自身的节点找起，它同parents()很类似，不同点就在于它只返回一个节点如在”3”中，实现的功能同1相同。但它使得代码量减小，同”2”相比又只返回单一的一个节点。可见，closest()方法在项目中的使用频率是比较大的。</p>
 
 
                 <hr>
@@ -157,10 +164,10 @@
 
                 <ul class="pager">
                     
-                    
-                    <li class="next">
-                        <a href="/2015/10/02/my-second-blog/" data-toggle="tooltip" data-placement="top" title="jquery  parent()、parents()、closest()的区别">Next Post &rarr;</a>
+                    <li class="previous">
+                        <a href="/2015/10/01/my-first-blog/" data-toggle="tooltip" data-placement="top" title="我的第一篇博文">&larr; Previous Post</a>
                     </li>
+                    
                     
                 </ul>
 
