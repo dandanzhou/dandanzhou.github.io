@@ -123,7 +123,7 @@ Seeing more information may be necessary for you to display, from V1.1, a clean,
 sidebar: true
 sidebar-feature-tags: true
 sidebar-about-description: "your description here"
-sidebar-avatar: /img/avatar-hux.jpg     # use absolute URL.
+sidebar-avatar: /img/avatar-zdd.jpeg     # use absolute URL.
 ```
 
 We default support *Featured Tags*, *Short About Me*, *Friends* these three modules and you can add your own. The Sidebar is naturally responsive and would be push to bottom in a small screen (<768px), the *Short About Me* would be also hidden in small screen.

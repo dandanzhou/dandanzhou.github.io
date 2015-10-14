@@ -35,8 +35,8 @@ kramdown:
 # Sidebar settings
 sidebar: true
 sidebar-featured-tags: true
-sidebar-about-description: "靠自己才是王道！"
-sidebar-avatar: /img/avatar-hux.jpg     # use absolute URL.
+sidebar-about-description: "靠自己才是王道！pppp"
+sidebar-avatar: /img/avatar-zdd.jpeg     # use absolute URL.
 
 # Friends
 friends: [
