@@ -5,8 +5,8 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 16 Oct 2015 11:25:52 +0800</pubDate>
-    <lastBuildDate>Fri, 16 Oct 2015 11:25:52 +0800</lastBuildDate>
+    <pubDate>Fri, 16 Oct 2015 13:14:53 +0800</pubDate>
+    <lastBuildDate>Fri, 16 Oct 2015 13:14:53 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -53,11 +53,26 @@
 
 &lt;h2 id=&quot;section&quot;&gt;区别&lt;/h2&gt;
 
-&lt;p&gt;1.parent()方法从指定类型的直接父节点开始查找，在”0”中，&lt;a&gt;的直接父节点是&amp;lt;li&amp;gt;所以在这里找不到&amp;lt;ul&amp;gt;父节点。在”2”中先找到了&amp;lt;li&amp;gt;，接着找到&amp;lt;ul&amp;gt;，并将它的背景色设置为yellow。parent()返回一个节点。&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1.parent()方法从指定类型的直接父节点开始查找，在&quot;0&quot;中， &amp;lt;a&amp;gt; 的直接父节点是&amp;lt;li&amp;gt;所以在这里找不到&amp;lt;ul&amp;gt;父节点。在&quot;2&quot;中先找到了&amp;lt;li&amp;gt;，接着找到&amp;lt;ul&amp;gt;，并将它的背景色设置为yellow。parent()返回一个节点。   
+ 
+2.parents()方法查找方式同parent()方法类似，不同的一点在于，当它找到第一的父节点时并没有停止查找，而是继续查找，最后返回多个父节点，如在&quot;2&quot;中，使得id为menu的ul整个背景色变成了yellow。      
+  
+3.closest()方法查找时从包含自身的节点找起，它同parents()很类似，不同点就在于它只返回一个节点如在&quot;3&quot;中，实现的功能同1相同。但它使得代码量减小，同&quot;2&quot;相比又只返回单一的一个节点。可见，closest()方法在项目中的使用频率是比较大的。
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;2.parents()方法查找方式同parent()方法类似，不同的一点在于，当它找到第一的父节点时并没有停止查找，而是继续查找，最后返回多个父节点，如在”2”中，使得id为menu的ul整个背景色变成了yellow。&lt;/p&gt;
+&lt;h2 id=&quot;section-1&quot;&gt;寻找子节点和兄弟节点&lt;/h2&gt;
 
-&lt;p&gt;3.closest()方法查找时从包含自身的节点找起，它同parents()很类似，不同点就在于它只返回一个节点如在”3”中，实现的功能同1相同。但它使得代码量减小，同”2”相比又只返回单一的一个节点。可见，closest()方法在项目中的使用频率是比较大的。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;children(expr) //查找所有子元素，只会找到直接的孩子节点，不会返回所有子孙&lt;/li&gt;
+  &lt;li&gt;contents() //查找下面的所有内容，包括节点和文本。&lt;/li&gt;
+  &lt;li&gt;prev() //查找上一个兄弟节点，不是所有的兄弟节点&lt;/li&gt;
+  &lt;li&gt;prevAll() //查找所有之前的兄弟节点&lt;/li&gt;
+  &lt;li&gt;next() //查找下一个兄弟节点，不是所有的兄弟节点&lt;/li&gt;
+  &lt;li&gt;nextAll() //查找所有之后的兄弟节点&lt;/li&gt;
+  &lt;li&gt;siblings() //查找兄弟节点，不分前后&lt;/li&gt;
+  &lt;li&gt;find() //会在div元素内 寻找 class为classname的元素。(子元素找)&lt;/li&gt;
+  &lt;li&gt;filter() //则是筛选div的class为classname的元素。(平级找)&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Thu, 15 Oct 2015 04:52:42 +0800</pubDate>
         <link>https://dandanzhou.github.io/2015/10/15/my-blog-2/</link>
