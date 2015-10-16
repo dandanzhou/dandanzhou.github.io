@@ -3,8 +3,7 @@ layout:     post
 title:      css书写规范、顺序
 date:       2015-10-16 9:20:00
 tags:
-    - 前端开发
-    - JavaScript
+    - CSS
 ---
 
 ## css书写顺序
