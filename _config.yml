@@ -9,11 +9,8 @@ url: "https://dandanzhou.github.io"
 
 # SNS settings
 RSS: true
-#weibo_username:     dandanzhou
-#zhihu_username:     dandanzhou
 github_username:    dandanzhou
-#twitter_username:  dandanzhou
-#facebook_username:  dandanzhou
+
 
 
 # Build settings
@@ -21,7 +18,6 @@ highlighter: pygments
 permalink: pretty
 paginate: 20
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
-anchorjs: true      # if you want to customize anchor. check out line:129 of `post.html`
 
 # Markdown settings
 # replace redcarpet to kramdown,
@@ -35,7 +31,7 @@ kramdown:
 # Sidebar settings
 sidebar: true
 sidebar-featured-tags: true
-sidebar-about-description: "靠自己才是王道!"
+sidebar-about-description: "靠自己才是王道！"
 sidebar-avatar: /img/avatar-zdd.jpeg     # use absolute URL.
 
 # Friends
