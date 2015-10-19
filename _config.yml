@@ -1,6 +1,6 @@
 # Site settings
 title: Daisydan
-header-img: http://7xnl4q.com1.z0.glb.clouddn.com/home-bg.jpg
+header-img: "http://7xnl4q.com1.z0.glb.clouddn.com/home-bg.jpg"
 email: daisyzhou.me@gmail.com
 description: 前端开发工程师一枚！
 baseurl: ""
@@ -32,7 +32,7 @@ kramdown:
 sidebar: true
 sidebar-featured-tags: true
 sidebar-about-description: "靠自己才是王道！"
-sidebar-avatar: http://7xnl4q.com1.z0.glb.clouddn.com/avatar-zdd.jpeg     # use absolute URL.
+sidebar-avatar: "http://7xnl4q.com1.z0.glb.clouddn.com/avatar-zdd.jpeg"     # use absolute URL.
 
 # Friends
 friends: [
