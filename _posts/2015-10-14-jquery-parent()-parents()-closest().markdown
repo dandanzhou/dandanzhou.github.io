@@ -7,7 +7,7 @@ tags:
 ---
 
 
-![](/img/pic-1.png)
+![](http://7xnl4q.com1.z0.glb.clouddn.com/post-bg-jquery-classfication.png)
 
 ## 区别   
 

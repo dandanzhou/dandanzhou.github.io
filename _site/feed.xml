@@ -5,8 +5,8 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 16 Oct 2015 13:14:53 +0800</pubDate>
-    <lastBuildDate>Fri, 16 Oct 2015 13:14:53 +0800</lastBuildDate>
+    <pubDate>Mon, 19 Oct 2015 11:44:06 +0800</pubDate>
+    <lastBuildDate>Mon, 19 Oct 2015 11:44:06 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -39,8 +39,8 @@
    详细可参考：&lt;a href=&quot;http://nec.netease.com/standard/css-sort.html&quot;&gt;http://nec.netease.com/standard/css-sort.html&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 16 Oct 2015 17:20:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/10/16/my-blog-3/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/16/my-blog-3/</guid>
+        <link>https://dandanzhou.github.io/2015/10/16/css-specifications/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/16/css-specifications/</guid>
         
         <category>CSS</category>
         
@@ -49,7 +49,7 @@
     
       <item>
         <title>parent()、parents()、closest()的区别</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/img/pic-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/post-bg-jquery-classfication.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;区别&lt;/h2&gt;
 
@@ -75,8 +75,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 15 Oct 2015 04:52:42 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/10/15/my-blog-2/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/15/my-blog-2/</guid>
+        <link>https://dandanzhou.github.io/2015/10/15/jquery-parent()-parents()-closest()/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/15/jquery-parent()-parents()-closest()/</guid>
         
         <category>Jquery</category>
         
@@ -89,8 +89,8 @@
 
 </description>
         <pubDate>Thu, 01 Oct 2015 22:46:42 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/10/01/my-blog-1/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/01/my-blog-1/</guid>
+        <link>https://dandanzhou.github.io/2015/10/01/my-first-blog/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/01/my-first-blog/</guid>
         
         <category>Others</category>
         
