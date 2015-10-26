@@ -94,5 +94,4 @@ JavaScript
       
   当前的 DOM 事件模型草案定义了 Event 对象属性 defaultPrevented。
   
-  javascript 的 return false 只会阻止默认行为，而是用 jQuery 的话则既阻止默认行为又防止对象冒泡。下面这个使用原生 JS，只会阻止默认行为，不会停止冒泡
-  
+  javascript 的 return false 只会阻止默认行为，而是用 jQuery 的话则既阻止默认行为又防止对象冒泡。
