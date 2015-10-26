@@ -5,8 +5,8 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 26 Oct 2015 20:50:21 +0800</pubDate>
-    <lastBuildDate>Mon, 26 Oct 2015 20:50:21 +0800</lastBuildDate>
+    <pubDate>Mon, 26 Oct 2015 21:25:25 +0800</pubDate>
+    <lastBuildDate>Mon, 26 Oct 2015 21:25:25 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -100,10 +100,7 @@
   }  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;当前的 DOM 事件模型草案定义了 Event 对象属性 defaultPrevented。&lt;/p&gt;
-
-&lt;p&gt;javascript 的 return false 只会阻止默认行为，而是用 jQuery 的话则既阻止默认行为又防止对象冒泡。下面这个使用原生 JS，只会阻止默认行为，不会停止冒泡&lt;/p&gt;
-
+&lt;p&gt;当前的 DOM 事件模型草案定义了 Event 对象属性 defaultPrevented。javascript 的 return false 只会阻止默认行为，而是用 jQuery 的话则既阻止默认行为又防止对象冒泡。&lt;/p&gt;
 </description>
         <pubDate>Sat, 24 Oct 2015 22:13:00 +0800</pubDate>
         <link>https://dandanzhou.github.io/2015/10/24/JS-event-bubbles-prevent-delegate/</link>
