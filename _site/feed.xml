@@ -5,9 +5,38 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 26 Oct 2015 21:25:25 +0800</pubDate>
-    <lastBuildDate>Mon, 26 Oct 2015 21:25:25 +0800</lastBuildDate>
+    <pubDate>Fri, 30 Oct 2015 20:03:34 +0800</pubDate>
+    <lastBuildDate>Fri, 30 Oct 2015 20:03:34 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>JavaScript闭包理解</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;闭包这个问题一直以来比较生涩，今天一个同事给了他的理解：闭包就是防止全局变量污染。&lt;br /&gt;
+  然后我专门上网查了下，总结了以下几点&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;闭包定义&lt;/h2&gt;
+&lt;p&gt;闭包通俗点说就是能够读取其他函数内部变量的函数（是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;闭包的好处&lt;/h2&gt;
+&lt;p&gt;1.希望一个变量长期驻扎在内存中&lt;br /&gt;
+  2.避免全局变量的污染&lt;br /&gt;
+  3.私有成员的存在&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;理解最深的就是避免全局变量的污染，通俗点说就是相同的变量互不干扰。比如我们定义了一个全局变量，在同一个函数里面又定义了多个和全局相同的变量，通常这种情况会导致全局变量会出错，但是引用闭包后就不会出现这种情况。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+        <pubDate>Sun, 25 Oct 2015 04:30:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2015/10/25/JS-bibao/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/25/JS-bibao/</guid>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
     
       <item>
         <title>JavaScript事件冒泡、事件委托和阻止事件</title>
