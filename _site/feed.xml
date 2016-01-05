@@ -5,9 +5,54 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 05 Jan 2016 13:53:34 +0800</pubDate>
-    <lastBuildDate>Tue, 05 Jan 2016 13:53:34 +0800</lastBuildDate>
+    <pubDate>Tue, 05 Jan 2016 14:13:06 +0800</pubDate>
+    <lastBuildDate>Tue, 05 Jan 2016 14:13:06 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>tab切换</title>
+        <description>&lt;h2 id=&quot;tab&quot;&gt;tab切换&lt;/h2&gt;
+
+&lt;p&gt;HTML部分&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul class=&quot;tabs&quot; id=&quot;tab&quot;&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;a href=&quot;javascript:void(0)&quot; class=&quot;current&quot;&amp;gt;tab切换一&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;a href=&quot;javascript:void(0)&quot; &amp;gt;tab切换二&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;a href=&quot;javascript:void(0)&quot;&amp;gt;tab切换三&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;div class=&quot;container&quot; id=&quot;contain&quot;&amp;gt;
+    &amp;lt;div class=&quot;con&quot;&amp;gt;显示内容一&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&quot;con&quot;&amp;gt;显示内容二&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&quot;con&quot;&amp;gt;显示内容三&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Jquery部分&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(function(){
+    tabs($(&quot;#tab a&quot;), $(&#39;#contain .con&#39;));  
+});
+
+var tabs = function(tab, con){
+    tab.click(function(){
+        var dIndex = tab.index(this);
+        tab.removeClass(&#39;current&#39;);
+        $(this).addClass(&#39;current&#39;);
+        con.hide();
+        con.eq(dIndex).show();
+    });    
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 20 Nov 2015 17:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2015/11/20/tab-change/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2015/11/20/tab-change/</guid>
+        
+        <category>Jquery</category>
+        
+        
+      </item>
     
       <item>
         <title>文字向上滚动</title>
@@ -332,7 +377,15 @@ mark, audio, video, source, track, bdi, canvas, command, datalist, summary, embe
     
       <item>
         <title>我的第一篇博文</title>
-        <description>&lt;p&gt;这是我的第一篇博文&lt;/p&gt;
+        <description>&lt;p&gt;这是我的第一篇博文～～&lt;/p&gt;
+
+&lt;p&gt;没想到第一次开始写博文是在毕业之后&lt;/p&gt;
+
+&lt;p&gt;怎么说呢&lt;/p&gt;
+
+&lt;p&gt;加油，努力呗&lt;/p&gt;
+
+&lt;p&gt;嘻嘻&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 01 Oct 2015 22:46:42 +0800</pubDate>
