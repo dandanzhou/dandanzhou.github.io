@@ -1,0 +1,35 @@
+---
+layout:     post
+title:      文字向上滚动
+date:       2015-11-12 20:07:00
+tags:
+    - JavaScript
+---
+
+## 文字向上滚动
+
+ HTML部分
+ 
+    <div class="content_three" id="content_three">
+		<div class="list_all" id="list_all"></div>
+		<div class="list_all" id="list_copy"></div>
+    </div>
+  
+ js部分 
+ 
+    var speed = 40 ;
+    var content_three = document.getElementById("content_three");  
+    var list_copy = document.getElementById("list_copy");  
+    var list_all = document.getElementById("list_all");  
+    list_copy.innerHTML = list_all.innerHTML + list_all.innerHTML;
+    
+    function Marquee() {  
+        if (list_copy.offsetTop - content_three.scrollTop <= 0)  
+            content_three.scrollTop -= list_all.offsetHeight ; 
+        else {  
+            content_three.scrollTop++ ; 
+        }  
+    }  
+    var MyMar = setInterval(Marquee, speed);  
+    content_three.onmouseover = function() { clearInterval(MyMar)} 
+    content_three.onmouseout = function() { MyMar = setInterval(Marquee, speed)} 
