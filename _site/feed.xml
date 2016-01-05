@@ -5,8 +5,8 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 05 Jan 2016 12:27:05 +0800</pubDate>
-    <lastBuildDate>Tue, 05 Jan 2016 12:27:05 +0800</lastBuildDate>
+    <pubDate>Tue, 05 Jan 2016 13:02:24 +0800</pubDate>
+    <lastBuildDate>Tue, 05 Jan 2016 13:02:24 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -62,8 +62,11 @@ time:标记文字的发布时间，可以让机器、搜索引擎等理解这篇
 figure:规定独立的流内容（图像、图表、照片、代码等等）;
 figcaption:元素应该被置于 &quot;figure&quot; 元素的第一个或最后一个子元素的位置。
 mark, audio, video, source, track, bdi, canvas, command, datalist, summary, embed, keygen, meter, output, progress, rp, rt, ruby。
-6、新增属性 在 HTML5 中，增加了很多form表单属性，当然还有其他属性。 required, from, pattern, placeholder, email, range[min, max, step], url, date, time, datetime, datetime-local, month, week, tel, number, search, --, contentcontenteditableable, contextmenu, data-yourvalue, draggable, item, itemprop,spellcheck, subject。  
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;6、新增属性 在 HTML5 中，增加了很多form表单属性，当然还有其他属性。 required, from, pattern, placeholder, email, range[min, max, step], url, date, time, datetime, datetime-local, month, week, tel, number, search, –, contentcontenteditableable, contextmenu, data-yourvalue, draggable, item, itemprop,spellcheck, subject。&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;四、字的单位&lt;/p&gt;
 

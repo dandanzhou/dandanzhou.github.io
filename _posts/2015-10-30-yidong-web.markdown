@@ -54,7 +54,8 @@ tags:
     figure:规定独立的流内容（图像、图表、照片、代码等等）;
     figcaption:元素应该被置于 "figure" 元素的第一个或最后一个子元素的位置。
     mark, audio, video, source, track, bdi, canvas, command, datalist, summary, embed, keygen, meter, output, progress, rp, rt, ruby。
-    6、新增属性 在 HTML5 中，增加了很多form表单属性，当然还有其他属性。 required, from, pattern, placeholder, email, range[min, max, step], url, date, time, datetime, datetime-local, month, week, tel, number, search, --, contentcontenteditableable, contextmenu, data-yourvalue, draggable, item, itemprop,spellcheck, subject。  
+    
+  > 6、新增属性 在 HTML5 中，增加了很多form表单属性，当然还有其他属性。 required, from, pattern, placeholder, email, range[min, max, step], url, date, time, datetime, datetime-local, month, week, tel, number, search, --, contentcontenteditableable, contextmenu, data-yourvalue, draggable, item, itemprop,spellcheck, subject。  
 
 四、字的单位
 
