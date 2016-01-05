@@ -5,9 +5,81 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 30 Oct 2015 20:03:34 +0800</pubDate>
-    <lastBuildDate>Fri, 30 Oct 2015 20:03:34 +0800</lastBuildDate>
+    <pubDate>Tue, 05 Jan 2016 12:27:05 +0800</pubDate>
+    <lastBuildDate>Tue, 05 Jan 2016 12:27:05 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>移动web经验总结</title>
+        <description>&lt;h2 id=&quot;web&quot;&gt;移动web经验总结&lt;/h2&gt;
+
+&lt;p&gt;一、头部引用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;&quot; /&amp;gt;&amp;lt;!-- 禁止缩放 --&amp;gt;
+
+&amp;lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-cache&quot; /&amp;gt;&amp;lt;!-- 清浏览器缓存 --&amp;gt;
+
+&amp;lt;meta content=&quot;telephone=no&quot; name=&quot;format-detection&quot;&amp;gt;&amp;lt;!-- 告诉设备忽略将页面中的数字识别为电话号码 --&amp;gt;
+
+&amp;lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&amp;gt;&amp;lt;!-- 删除默认的苹果工具栏和菜单栏。 --&amp;gt;
+
+&amp;lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot; /&amp;gt;&amp;lt;!-- 当启用webapp功能时，控制手机顶部导航栏的颜色，根据实际页面的主题色进行设置 --&amp;gt;
+
+&amp;lt;meta name=&quot;apple-mobile-web-app-capable&quot; contenat=&quot;yes&quot; /&amp;gt;&amp;lt;!-- 网站开启对web app程序的支持 --&amp;gt;
+
+&amp;lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;/&amp;gt; &amp;lt;!-- 优先使用 IE 最新版本和 Chrome --&amp;gt;
+
+&amp;lt;meta content=&quot;email=no&quot; name=&quot;format-detection&quot; /&amp;gt;&amp;lt;!-- 禁止Android自动识别页面中的邮件地址 --&amp;gt;
+
+&amp;lt;meta content=&quot;description&quot; content=&quot;内容不超过150字&quot; /&amp;gt; &amp;lt;!-- 页面描述--&amp;gt;
+
+&amp;lt;meta name=&quot;keywords&quot; content=&quot;&quot;/&amp;gt;     &amp;lt;!-- 页面关键词 --&amp;gt;
+
+&amp;lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&amp;gt;   &amp;lt;!-- windows phone 点击无高光 --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;二、整体布局&lt;/p&gt;
+
+&lt;p&gt;慎用flex布局，本人亲测，flex布局在安卓机上不是很管用，详见请点击&lt;a href=&quot;http://www.ayqy.net/blog/flexbox%E5%B8%83%E5%B1%80%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7/&quot;&gt;说明&lt;/a&gt;；&lt;/p&gt;
+
+&lt;p&gt;三、使用html5&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1、简洁的 DOCTYPE HTML5 只需一个简洁的文档类型：&amp;lt;!DOCTYPE html&amp;gt;。它有意不使用版本，因此文档将会适用所有版本的HTML。&lt;br /&gt;
+    2、简单易记的语言标签 你并不需要在 &amp;lt;html&amp;gt; 中使用 xmlns 或 xml:lang 标记。 &amp;lt;html lang=”en”&amp;gt; 将对 HTML5 有效。&lt;br /&gt;
+    3、简单易记的编码类型 你现在可以在 meta 标签中使用 “charset”：&amp;lt;meta charset=”utf-8″ /&amp;gt;&lt;br /&gt;
+    4、不需要闭合标签 在 HTML5 中，空标签（如：br、img 和 input ）并不需要闭合标签。&lt;br /&gt;
+    5、新增标签 新增的语义化标签&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;header:用于表示头部区域;
+hgroup:我们可以使用 hgroup 元素包裹网站标题（h1)和网站副标题（h2）;
+nav:通常用于以下场合：网站导航条、侧边栏导航条、页内导航、前页后页翻页等。但是，普遍认为的是，一个页面上最好只用一个 nav 标签，用它来标记最重要的导航条（一般就是网站的导航条）。这样，可以让搜索引擎等快速定位，避免误导;
+section:通常对网站或页面上的内容，进行分开[article 元素与 section 元素区别详解](http://www.qianxingzhem.com/post-915.html)；
+article:来表示文档、页面或者独立的、完整的、可以独自被外部引用的内容;
+aside:表示属于这个 article 的相关描述信息。此外,aside 也用于边栏功能;
+time:标记文字的发布时间，可以让机器、搜索引擎等理解这篇文章是什么时间发表的;
+figure:规定独立的流内容（图像、图表、照片、代码等等）;
+figcaption:元素应该被置于 &quot;figure&quot; 元素的第一个或最后一个子元素的位置。
+mark, audio, video, source, track, bdi, canvas, command, datalist, summary, embed, keygen, meter, output, progress, rp, rt, ruby。
+6、新增属性 在 HTML5 中，增加了很多form表单属性，当然还有其他属性。 required, from, pattern, placeholder, email, range[min, max, step], url, date, time, datetime, datetime-local, month, week, tel, number, search, --, contentcontenteditableable, contextmenu, data-yourvalue, draggable, item, itemprop,spellcheck, subject。  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;四、字的单位&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;使用rem(是通过根元素进行适配的，网页中的根元素指的是html我们通过设置html的字体大小就可以控制rem的大小);&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+        <pubDate>Wed, 11 Nov 2015 04:07:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2015/11/11/yidong-web/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2015/11/11/yidong-web/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
     
       <item>
         <title>JavaScript闭包理解</title>
