@@ -5,9 +5,33 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 05 Jan 2016 14:13:06 +0800</pubDate>
-    <lastBuildDate>Tue, 05 Jan 2016 14:13:06 +0800</lastBuildDate>
+    <pubDate>Tue, 05 Jan 2016 14:39:40 +0800</pubDate>
+    <lastBuildDate>Tue, 05 Jan 2016 14:39:40 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>易混淆的方法</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;易混淆的方法&lt;/h2&gt;
+
+&lt;p&gt;parent()：查找&lt;em style=&quot;color:red;&quot;&gt;直接的&lt;/em&gt;父节点&lt;br /&gt;
+  parents()：查找&lt;em style=&quot;color:red;&quot;&gt;所有的&lt;/em&gt;祖先元素&lt;br /&gt;
+  sibling()：查找兄弟节点，不分前后&lt;br /&gt;
+  children()：查找所有子元素，只会找到&lt;em style=&quot;color:red;&quot;&gt;直接的&lt;/em&gt;孩子节点，不会返回所有子孙&lt;br /&gt;
+  find()：会在div元素内 寻找 class为classname的元素。(&lt;em style=&quot;color:red;&quot;&gt;子元素&lt;/em&gt;找)&lt;br /&gt;
+  filter()：则是筛选div的class为classname的元素。(&lt;em style=&quot;color:red;&quot;&gt;平级&lt;/em&gt;找)&lt;/p&gt;
+
+&lt;p&gt;get()：接受一个索引值参数并返回对应的DOM节点&lt;br /&gt;
+  index()：接受一个DOM节点然后返回其索引值，index(this)返回当前值的索引值&lt;br /&gt;
+  eq(index)：index为正整数时以0为基数，index为负整数时从集合中的最后一个元素开始倒数（从1开始倒数）&lt;/p&gt;
+</description>
+        <pubDate>Wed, 02 Dec 2015 02:05:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2015/12/02/parents-children/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2015/12/02/parents-children/</guid>
+        
+        <category>Jquery</category>
+        
+        
+      </item>
     
       <item>
         <title>tab切换</title>
