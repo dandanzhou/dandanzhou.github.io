@@ -5,9 +5,81 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 05 Jan 2016 14:39:40 +0800</pubDate>
-    <lastBuildDate>Tue, 05 Jan 2016 14:39:40 +0800</lastBuildDate>
+    <pubDate>Sun, 10 Jan 2016 21:44:40 +0800</pubDate>
+    <lastBuildDate>Sun, 10 Jan 2016 21:44:40 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>web跨域解决方案</title>
+        <description>&lt;h2 id=&quot;web&quot;&gt;web跨域解决方案&lt;/h2&gt;
+&lt;p&gt;我们都知道HTML的同源策略不允许JavaScript进行跨域操作，但随着Web App的功能越来越强，各种跨域的需求催生了无数的跨域手法。&lt;br /&gt;
+   跨域办法大致可以分为两类:&lt;br /&gt;
+    &lt;em&gt;1、一类是hack,比如通过title, navigation等对象传递信息，JSONP可以说是一个最优秀的Hack。&lt;/em&gt;&lt;br /&gt;
+    &lt;em&gt;2、另一类是HTML5支持，一个是Access-Control-Allow-Origin响应头，一个是window.postMessage&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;documentdomain&quot;&gt;设置 document.domain&lt;/h4&gt;
+&lt;p&gt;原理：相同主域名不同子域名下的页面，可以设置document.domain让它们同域&lt;br /&gt;
+   限制：同域document提供的是页面间的互操作，需要载入iframe页面&lt;/p&gt;
+
+&lt;h4 id=&quot;jsonp&quot;&gt;JSONP&lt;/h4&gt;
+&lt;p&gt;原理：script是可以跨域的，而且在跨域脚本中可以直接回调当前脚本的函数。&lt;br /&gt;
+   限制：需要创建一个DOM对象并且添加到DOM树，只能用于GET方法&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;跨域URL返回的脚本不仅包含数据，还包含一个回调：&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  // URL: http://b.a.com/foo
+    var data = {
+        foo: &#39;bar&#39;,
+        bar: &#39;foo&#39;
+    };
+    callback(data);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;然后在我们在主站http://a.com中，可以这样来跨域获取http://b.a.com的数据：&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    // URL: http://a.com/foo
+    var callback = function(data){
+        // 处理跨域请求得到的数据
+    };
+    var script = $(&#39;&amp;lt;script&amp;gt;&#39;, {src: &#39;http://b.a.com/bar&#39;});
+    $(&#39;body&#39;).append(script);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;其实jQuery已经封装了JSONP的使用，我们可以这样来&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    $.getJSON( &quot;http://b.a.com/bar?callback=callback&quot;, function( data ){
+        // 处理跨域请求得到的数据
+    });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;$.getJSON与$.get的区别是前者会把responseText转换为JSON，而且当URL具有callback参数时， jQuery将会把它解释为一个JSONP请求，创建一个script标签来完成该请求。&lt;/p&gt;
+
+&lt;h4 id=&quot;windowpostmessage&quot;&gt;window.postMessage&lt;/h4&gt;
+&lt;p&gt;原理：HTML5允许窗口之间发送消息&lt;br /&gt;
+限制：浏览器需要支持HTML5，获取窗口句柄后才能相互通信&lt;/p&gt;
+
+&lt;h4 id=&quot;cors&quot;&gt;跨域资源共享（CORS）&lt;/h4&gt;
+&lt;p&gt;原理：服务器设置Access-Control-Allow-OriginHTTP响应头之后，浏览器将会允许跨域请求&lt;br /&gt;
+限制：浏览器需要支持HTML5，可以支持POST，PUT等方法&lt;/p&gt;
+
+&lt;h4 id=&quot;navigation-&quot;&gt;navigation 对象&lt;/h4&gt;
+&lt;p&gt;原理：iframe之间是共享navigator对象的，用它来传递信息&lt;br /&gt;
+要求：IE6/7&lt;/p&gt;
+
+&lt;h4 id=&quot;src&quot;&gt;有src的标签&lt;/h4&gt;
+&lt;p&gt;原理：所有具有src属性的HTML标签都是可以跨域的，包括img, script&lt;br /&gt;
+   限制：需要创建一个DOM对象，只能用于GET方法&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://harttle.com/2015/10/10/cross-origin.html&quot;&gt;参考文章&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 16 Dec 2015 04:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2015/12/16/web-cross/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2015/12/16/web-cross/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
     
       <item>
         <title>易混淆的方法</title>

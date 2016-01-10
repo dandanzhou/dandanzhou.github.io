@@ -1,0 +1,70 @@
+---
+layout:     post
+title:      web跨域解决方案
+date:       2015-12-15 20:00:00
+tags:
+    - Others
+---
+
+## web跨域解决方案
+   我们都知道HTML的同源策略不允许JavaScript进行跨域操作，但随着Web App的功能越来越强，各种跨域的需求催生了无数的跨域手法。
+   跨域办法大致可以分为两类:
+    *1、一类是hack,比如通过title, navigation等对象传递信息，JSONP可以说是一个最优秀的Hack。*
+    *2、另一类是HTML5支持，一个是Access-Control-Allow-Origin响应头，一个是window.postMessage*
+      
+  
+#### 设置 document.domain
+   原理：相同主域名不同子域名下的页面，可以设置document.domain让它们同域
+   限制：同域document提供的是页面间的互操作，需要载入iframe页面
+
+
+#### JSONP
+   原理：script是可以跨域的，而且在跨域脚本中可以直接回调当前脚本的函数。
+   限制：需要创建一个DOM对象并且添加到DOM树，只能用于GET方法
+   
+   *跨域URL返回的脚本不仅包含数据，还包含一个回调：*
+   
+      // URL: http://b.a.com/foo
+        var data = {
+            foo: 'bar',
+            bar: 'foo'
+        };
+        callback(data);
+   
+   *然后在我们在主站http://a.com中，可以这样来跨域获取http://b.a.com的数据：*
+   
+        // URL: http://a.com/foo
+        var callback = function(data){
+            // 处理跨域请求得到的数据
+        };
+        var script = $('<script>', {src: 'http://b.a.com/bar'});
+        $('body').append(script);
+        
+   *其实jQuery已经封装了JSONP的使用，我们可以这样来* 
+   
+        $.getJSON( "http://b.a.com/bar?callback=callback", function( data ){
+            // 处理跨域请求得到的数据
+        });
+        
+   $.getJSON与$.get的区别是前者会把responseText转换为JSON，而且当URL具有callback参数时， jQuery将会把它解释为一个JSONP请求，创建一个script标签来完成该请求。
+
+
+#### window.postMessage
+原理：HTML5允许窗口之间发送消息
+限制：浏览器需要支持HTML5，获取窗口句柄后才能相互通信
+
+#### 跨域资源共享（CORS）
+原理：服务器设置Access-Control-Allow-OriginHTTP响应头之后，浏览器将会允许跨域请求
+限制：浏览器需要支持HTML5，可以支持POST，PUT等方法
+
+#### navigation 对象
+原理：iframe之间是共享navigator对象的，用它来传递信息
+要求：IE6/7
+
+#### 有src的标签
+   原理：所有具有src属性的HTML标签都是可以跨域的，包括img, script
+   限制：需要创建一个DOM对象，只能用于GET方法
+   
+   
+   
+[参考文章](http://harttle.com/2015/10/10/cross-origin.html)
