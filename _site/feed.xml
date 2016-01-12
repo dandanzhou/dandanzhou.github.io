@@ -5,9 +5,80 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 12 Jan 2016 14:08:47 +0800</pubDate>
-    <lastBuildDate>Tue, 12 Jan 2016 14:08:47 +0800</lastBuildDate>
+    <pubDate>Tue, 12 Jan 2016 14:32:36 +0800</pubDate>
+    <lastBuildDate>Tue, 12 Jan 2016 14:32:36 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>JS正则表达式总结</title>
+        <description>&lt;h2 id=&quot;js&quot;&gt;JS正则表达式总结&lt;/h2&gt;
+&lt;p&gt;正则表达式通常用于两种任务：1.验证，2.搜索/替换。&lt;/p&gt;
+
+&lt;p&gt;*字符类匹配&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[...]	方括号内的任意字符
+[^...]	不在方括号内的任意字符
+.	除了换行符和其他Unicode行终止符之外的任意字符
+\w	任何ASCII字符组成的单词，等价于[a-zA-Z0-9]
+\W	任何不是ASCII字符组成的单词，等价于[^a-zA-Z0-9]
+\s	任何Unicode空白符
+\S	任何非Unicode空白符的字符
+\d	任何ASCII数字，介于[0-9]
+\D	除了ASCII数字之外的任何字符，等价于[^0-9]
+\b	退格直接量
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;*重复字符匹配&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{n,m}	匹配前一项至少n次，但不能超过m次
+{n,}	匹配前一项n次或更多次
+{n}	匹配前一项n次
+？	匹配前一项0次或者1次，也就是说前一项是可选的，等价于{0，1}
++	匹配前一项1次或多次，等价于{1，}
+*	匹配前一项0次或多次，等价于{0，}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;*正则表达式修饰符&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;i        执行不区分大小写的匹配
+g        执行一个全局匹配，即找到所有匹配而非一次匹配
+m        多行匹配模式，^匹配一行的开头和字符串开头，$匹配行的结束和字符串的结尾
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;*RegExp的方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;test()：检索字符串中的指定值。返回值是布尔值。
+exec()：返回一个数组，数组中的第一个条目是第一个匹配，其他的是反向引用
+compile()：既可以改变检索模式，也可以添加或删除第二个参数。 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;*String 对象中的正则表达式方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;match(pattern)	返回 pattern 中的子串或 null
+replace(pattern, replacement)	用 replacement 替换 pattern
+search(pattern)	返回字符串中 pattern 开始位置
+split(pattern)	返回字符串按指定 pattern 拆分的数组
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;*建立正则表达式&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;match 方法&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/*使用 match 方法获取获取匹配数组*/ 
+var pattern = /box/ig;//全局搜索 
+var str = &#39;This is a Box!,That is a Box too&#39;; 
+alert(str.match(pattern)); //匹配到两个 Box,Box
+console.log(str.match(pattern).length);//获取数组的长度
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Tue, 12 Jan 2016 22:12:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2016/01/12/zhengze/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2016/01/12/zhengze/</guid>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
     
       <item>
         <title>各种top、left、height</title>
@@ -483,42 +554,6 @@ mark, audio, video, source, track, bdi, canvas, command, datalist, summary, embe
         <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/16/css-specifications/</guid>
         
         <category>CSS</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>parent()、parents()、closest()的区别</title>
-        <description>&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/post-bg-jquery-classfication.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;区别&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;1.parent()方法从指定类型的直接父节点开始查找，在&quot;0&quot;中， &amp;lt;a&amp;gt; 的直接父节点是&amp;lt;li&amp;gt;所以在这里找不到&amp;lt;ul&amp;gt;父节点。在&quot;2&quot;中先找到了&amp;lt;li&amp;gt;，接着找到&amp;lt;ul&amp;gt;，并将它的背景色设置为yellow。parent()返回一个节点。   
- 
-2.parents()方法查找方式同parent()方法类似，不同的一点在于，当它找到第一的父节点时并没有停止查找，而是继续查找，最后返回多个父节点，如在&quot;2&quot;中，使得id为menu的ul整个背景色变成了yellow。      
-  
-3.closest()方法查找时从包含自身的节点找起，它同parents()很类似，不同点就在于它只返回一个节点如在&quot;3&quot;中，实现的功能同1相同。但它使得代码量减小，同&quot;2&quot;相比又只返回单一的一个节点。可见，closest()方法在项目中的使用频率是比较大的。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;寻找子节点和兄弟节点&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;children(expr) //查找所有子元素，只会找到直接的孩子节点，不会返回所有子孙&lt;/li&gt;
-  &lt;li&gt;contents() //查找下面的所有内容，包括节点和文本。&lt;/li&gt;
-  &lt;li&gt;prev() //查找上一个兄弟节点，不是所有的兄弟节点&lt;/li&gt;
-  &lt;li&gt;prevAll() //查找所有之前的兄弟节点&lt;/li&gt;
-  &lt;li&gt;next() //查找下一个兄弟节点，不是所有的兄弟节点&lt;/li&gt;
-  &lt;li&gt;nextAll() //查找所有之后的兄弟节点&lt;/li&gt;
-  &lt;li&gt;siblings() //查找兄弟节点，不分前后&lt;/li&gt;
-  &lt;li&gt;find() //会在div元素内 寻找 class为classname的元素。(子元素找)&lt;/li&gt;
-  &lt;li&gt;filter() //则是筛选div的class为classname的元素。(平级找)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Thu, 15 Oct 2015 04:52:42 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/10/15/jquery-parent()-parents()-closest()/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/15/jquery-parent()-parents()-closest()/</guid>
-        
-        <category>Jquery</category>
         
         
       </item>
