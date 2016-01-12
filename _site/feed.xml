@@ -5,9 +5,61 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 10 Jan 2016 21:44:40 +0800</pubDate>
-    <lastBuildDate>Sun, 10 Jan 2016 21:44:40 +0800</lastBuildDate>
+    <pubDate>Tue, 12 Jan 2016 14:08:47 +0800</pubDate>
+    <lastBuildDate>Tue, 12 Jan 2016 14:08:47 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>各种top、left、height</title>
+        <description>&lt;h2 id=&quot;topleftheight&quot;&gt;各种top、left、height&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;网页可见区域宽： document.body.clientWidth;&lt;br /&gt;
+网页可见区域高： document.body.clientHeight;&lt;br /&gt;
+网页可见区域宽： document.body.offsetWidth   (包括边线的宽);&lt;br /&gt;
+网页可见区域高： document.body.offsetHeight  (包括边线的宽);&lt;br /&gt;
+网页正文全文宽： document.body.scrollWidth;&lt;br /&gt;
+网页正文全文高： document.body.scrollHeight;&lt;br /&gt;
+网页被卷去的高： document.body.scrollTop;&lt;br /&gt;
+网页被卷去的左： document.body.scrollLeft;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;假设 obj 为某个 HTML 控件。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;obj.offsetTop 指 obj 距离上方或上层控件的位置，整型，单位像素。
+obj.offsetLeft 指 obj 距离左方或上层控件的位置，整型，单位像素。
+obj.offsetWidth 指 obj 控件自身的宽度，整型，单位像素。
+obj.offsetHeight 指 obj 控件自身的高度，整型，单位像素。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;offsetTop 与 style.top 的区别&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1、offsetTop 返回的是数字，而 style.top 返回的是字符串，除了数字外还带有单位：px。
+2、offsetTop 只读，而 style.top 可读写。
+3、如果没有给 HTML 元素指定过 top 样式，则 style.top 返回的是空字符串。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;offsetWidth 与 style.width 的区别&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;如对象的宽度设定值为百分比宽度,则无论页面变大还是变小,style.width都返回此百分比,而offsetWidth则返回在不同页面中对象的宽度值而不是百分比值
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;clientHeight、offsetHeight和scrollHeight 的区别&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;clientHeight 就是透过浏览器看内容的这个区域高度。
+NS（Netscape）、 FF （FireFox）认为 offsetHeight 和 scrollHeight 都是网页内容高度，只不过当网页内容高度小于等于 clientHeight 时，scrollHeight 的值是 clientHeight，而 offsetHeight 可以小于 clientHeight。
+IE、Opera 认为 offsetHeight 是可视区域 clientHeight 滚动条加边框。scrollHeight 则是网页内容实际高度。
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        <pubDate>Mon, 21 Dec 2015 06:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2015/12/21/top-left-height/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2015/12/21/top-left-height/</guid>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
     
       <item>
         <title>web跨域解决方案</title>
@@ -467,28 +519,6 @@ mark, audio, video, source, track, bdi, canvas, command, datalist, summary, embe
         <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/15/jquery-parent()-parents()-closest()/</guid>
         
         <category>Jquery</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>我的第一篇博文</title>
-        <description>&lt;p&gt;这是我的第一篇博文～～&lt;/p&gt;
-
-&lt;p&gt;没想到第一次开始写博文是在毕业之后&lt;/p&gt;
-
-&lt;p&gt;怎么说呢&lt;/p&gt;
-
-&lt;p&gt;加油，努力呗&lt;/p&gt;
-
-&lt;p&gt;嘻嘻&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 01 Oct 2015 22:46:42 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/10/01/my-first-blog/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/01/my-first-blog/</guid>
-        
-        <category>Others</category>
         
         
       </item>
