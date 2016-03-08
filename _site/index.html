@@ -115,6 +115,32 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2016/01/14/usually-js%E6%AD%A3%E5%88%99/">
+        <h2 class="post-title">            Js常用正则
+        </h2>
+        
+        <div class="post-content-preview">
+            Js常用正则
+前端开发中总避免不了使用一些正则表达式来处理一些问题，下面就列常用的几例
+
+
+  字符串去重
+
+
+var str = "adsfjjbkk";  
+// \1匹配第一个子串  
+// 只去除连续重复  
+console.log(str.replace(/(.)(\1)+/g,function($1,$2,$3){  
+    return $2;  
+}));// adsfjb...
+        </div>
+    </a>
+    <p class="post-meta">Posted by Daisydan on January 14, 2016</p>
+        
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2016/01/12/zhengze/">
         <h2 class="post-title">            JS正则表达式总结
         </h2>
@@ -412,7 +438,7 @@ c...
                             
         				
                             
-                				<a href="/tags/#JavaScript" title="JavaScript" rel="5">
+                				<a href="/tags/#JavaScript" title="JavaScript" rel="6">
                                     JavaScript
                                 </a>
                             

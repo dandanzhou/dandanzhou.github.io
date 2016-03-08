@@ -49,12 +49,10 @@ tags:
     search(pattern)	返回字符串中 pattern 开始位置
     split(pattern)	返回字符串按指定 pattern 拆分的数组
     
-*建立正则表达式
+*特殊字符
 
-   *match 方法*
-   
-    /*使用 match 方法获取获取匹配数组*/ 
-    var pattern = /box/ig;//全局搜索 
-    var str = 'This is a Box!,That is a Box too'; 
-    alert(str.match(pattern)); //匹配到两个 Box,Box
-    console.log(str.match(pattern).length);//获取数组的长度
+    var re = /(\w+)\s(\w+)/;
+    var str = 'John Smith';
+    str.replace(re, '$2, $1'); // "Smith, John"
+    RegExp.$1; // "John"
+    RegExp.$2; // "Smith"

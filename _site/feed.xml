@@ -5,9 +5,52 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 12 Jan 2016 14:32:36 +0800</pubDate>
-    <lastBuildDate>Tue, 12 Jan 2016 14:32:36 +0800</lastBuildDate>
+    <pubDate>Tue, 08 Mar 2016 21:06:14 +0800</pubDate>
+    <lastBuildDate>Tue, 08 Mar 2016 21:06:14 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Js常用正则</title>
+        <description>&lt;h2 id=&quot;js&quot;&gt;Js常用正则&lt;/h2&gt;
+&lt;p&gt;前端开发中总避免不了使用一些正则表达式来处理一些问题，下面就列常用的几例&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;字符串去重&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;var str = &quot;adsfjjbkk&quot;;  
+// \1匹配第一个子串  
+// 只去除连续重复  
+console.log(str.replace(/(.)(\1)+/g,function($1,$2,$3){  
+    return $2;  
+}));// adsfjbk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;js获取URL中的参数&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;function GetQueryString(name) {
+    var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + name + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;, &quot;i&quot;);
+    var r = window.location.search.substr(1).match(reg); //获取url中&quot;?&quot;符后的字符串并正则匹配
+    var context = &quot;&quot;;
+    if (r != null)
+    context = r[2];
+    reg = null;
+    r = null;
+    return context == null || context == &quot;&quot; || context == &quot;undefined&quot; ? &quot;&quot; : context;
+}
+alert(GetQueryString(&quot;q&quot;));
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Thu, 14 Jan 2016 22:12:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2016/01/14/usually-js%E6%AD%A3%E5%88%99/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2016/01/14/usually-js%E6%AD%A3%E5%88%99/</guid>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
     
       <item>
         <title>JS正则表达式总结</title>
@@ -60,15 +103,13 @@ search(pattern)	返回字符串中 pattern 开始位置
 split(pattern)	返回字符串按指定 pattern 拆分的数组
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;*建立正则表达式&lt;/p&gt;
+&lt;p&gt;*特殊字符&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;match 方法&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/*使用 match 方法获取获取匹配数组*/ 
-var pattern = /box/ig;//全局搜索 
-var str = &#39;This is a Box!,That is a Box too&#39;; 
-alert(str.match(pattern)); //匹配到两个 Box,Box
-console.log(str.match(pattern).length);//获取数组的长度
+&lt;pre&gt;&lt;code&gt;var re = /(\w+)\s(\w+)/;
+var str = &#39;John Smith&#39;;
+str.replace(re, &#39;$2, $1&#39;); // &quot;Smith, John&quot;
+RegExp.$1; // &quot;John&quot;
+RegExp.$2; // &quot;Smith&quot;
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Tue, 12 Jan 2016 22:12:00 +0800</pubDate>
@@ -516,44 +557,6 @@ mark, audio, video, source, track, bdi, canvas, command, datalist, summary, embe
         <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/24/JS-event-bubbles-prevent-delegate/</guid>
         
         <category>JavaScript</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>css书写规范、顺序</title>
-        <description>&lt;h2 id=&quot;css&quot;&gt;css书写顺序&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;1.位置属性（postion、top、right、z-index、display、float等）&lt;br /&gt;
-  2.大小（width、height、padding、margin等）&lt;br /&gt;
-  3.文字系列（font、line-height、letter-sapce等）&lt;br /&gt;
-  4.背景（background、border等）&lt;br /&gt;
-  5.其他（animation、transtion等）&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;css-1&quot;&gt;css样式表文件命名&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;em&gt;主要的 master.css&lt;br /&gt;
-　&lt;/em&gt;模块 module.css&lt;br /&gt;
-　&lt;em&gt;基本共用 base.css&lt;br /&gt;
-　&lt;/em&gt;布局、版面 layout.css&lt;br /&gt;
-　&lt;em&gt;主题 themes.css&lt;br /&gt;
-　&lt;/em&gt;专栏 columns.css&lt;br /&gt;
-　&lt;em&gt;文字 font.css&lt;br /&gt;
-　&lt;/em&gt;表单 forms.css&lt;br /&gt;
-　&lt;em&gt;补丁 mend.css&lt;br /&gt;
-　&lt;/em&gt;打印 print.css&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;其他&lt;/h2&gt;
-&lt;p&gt;class和id命名要简洁并表明含义&lt;br /&gt;
-   详细可参考：&lt;a href=&quot;http://nec.netease.com/standard/css-sort.html&quot;&gt;http://nec.netease.com/standard/css-sort.html&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 16 Oct 2015 17:20:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/10/16/css-specifications/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/16/css-specifications/</guid>
-        
-        <category>CSS</category>
         
         
       </item>
