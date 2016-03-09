@@ -5,8 +5,8 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 09 Mar 2016 20:59:18 +0800</pubDate>
-    <lastBuildDate>Wed, 09 Mar 2016 20:59:18 +0800</lastBuildDate>
+    <pubDate>Wed, 09 Mar 2016 21:34:30 +0800</pubDate>
+    <lastBuildDate>Wed, 09 Mar 2016 21:34:30 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -68,6 +68,77 @@
         <guid isPermaLink="true">https://dandanzhou.github.io/2016/03/10/%E6%B5%8F%E8%A7%88%E5%99%A8-URL/</guid>
         
         <category>Others</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Promise初探</title>
+        <description>&lt;h2 id=&quot;promise&quot;&gt;Promise初探&lt;/h2&gt;
+&lt;p&gt;Promise是抽象异步处理对象以及对其进行各种操作的组件。&lt;br /&gt;
+创建promise对象的流程如下所示。&lt;br /&gt;
+1、new Promise(fn) 返回一个promise对象&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var promise = new Promise(function(resolve, reject) {
+        // 异步处理
+        // 处理结束后、调用resolve 或 reject
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2、在fn 中指定异步等处理&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;处理结果正常的话，调用resolve(处理结果值)
+处理结果错误的话，调用reject(Error对象)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Promise.reject(error)是和 Promise.resolve(value) 类似的静态方法，是 new Promise() 方法的快捷方式。&lt;br /&gt;
+比如 Promise.resolve(42); 可以认为是以下代码的语法糖。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;new Promise(function(resolve){
+    resolve(42);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;比如 Promise.reject(new Error(“出错了”)) 就是下面代码的语法糖形式。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;new Promise(function(resolve,reject){
+    reject(new Error(&quot;出错了&quot;));
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;promise可以写成方法链的形式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function taskA() {
+    console.log(&quot;Task A&quot;);
+}
+function taskB() {
+    console.log(&quot;Task B&quot;);
+}
+function onRejected(error) {
+    console.log(&quot;Catch Error: A or B&quot;, error);
+}
+function finalTask() {
+    console.log(&quot;Final Task&quot;);
+}
+
+var promise = Promise.resolve();
+promise
+    .then(taskA)
+    .then(taskB)
+    .catch(onRejected)
+    .then(finalTask);
+    
+运行结果：Task A
+Task B
+Final Task
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        <pubDate>Thu, 10 Mar 2016 04:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2016/03/10/%20promise/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2016/03/10/%20promise/</guid>
+        
+        <category>JavaScript</category>
         
         
       </item>
@@ -489,35 +560,6 @@ mark, audio, video, source, track, bdi, canvas, command, datalist, summary, embe
         <guid isPermaLink="true">https://dandanzhou.github.io/2015/11/06/yidong-web/</guid>
         
         <category>Others</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>JavaScript闭包理解</title>
-        <description>&lt;blockquote&gt;
-  &lt;p&gt;闭包这个问题一直以来比较生涩，今天一个同事给了他的理解：闭包就是防止全局变量污染。&lt;br /&gt;
-  然后我专门上网查了下，总结了以下几点&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;闭包定义&lt;/h2&gt;
-&lt;p&gt;闭包通俗点说就是能够读取其他函数内部变量的函数（是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;闭包的好处&lt;/h2&gt;
-&lt;p&gt;1.希望一个变量长期驻扎在内存中&lt;br /&gt;
-  2.避免全局变量的污染&lt;br /&gt;
-  3.私有成员的存在&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;理解最深的就是避免全局变量的污染，通俗点说就是相同的变量互不干扰。比如我们定义了一个全局变量，在同一个函数里面又定义了多个和全局相同的变量，通常这种情况会导致全局变量会出错，但是引用闭包后就不会出现这种情况。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-</description>
-        <pubDate>Sun, 25 Oct 2015 04:30:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/10/25/JS-bibao/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/10/25/JS-bibao/</guid>
-        
-        <category>JavaScript</category>
         
         
       </item>
