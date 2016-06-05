@@ -5,14 +5,14 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 11 Mar 2016 10:58:15 +0800</pubDate>
-    <lastBuildDate>Fri, 11 Mar 2016 10:58:15 +0800</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
+    <pubDate>Sun, 05 Jun 2016 20:05:07 +0800</pubDate>
+    <lastBuildDate>Sun, 05 Jun 2016 20:05:07 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>神奇的BFC</title>
         <description>&lt;h2 id=&quot;bfc&quot;&gt;神奇的BFC&lt;/h2&gt;
-&lt;p&gt;BFC，当别人向我提到这个词的时候，我脑袋里是一片空白，工作大半年了，连这个都不知道，甚是惭愧啊~~&lt;br /&gt;
+&lt;p&gt;BFC，当别人向我提到这个词的时候，我脑袋里是一片空白，工作大半年了，连这个都不知道，甚是惭愧啊~~
 于是在网上查找相关资料整理如下：&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -62,7 +62,7 @@
         <description>&lt;h2 id=&quot;promise&quot;&gt;Promise初探&lt;/h2&gt;
 &lt;p&gt;Promise是抽象异步处理对象以及对其进行各种操作的组件。&lt;/p&gt;
 
-&lt;p&gt;创建promise对象的流程如下所示。		&lt;br /&gt;
+&lt;p&gt;创建promise对象的流程如下所示。		
  1、new Promise(fn) 返回一个promise对象&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;var promise = new Promise(function(resolve, reject) {		
@@ -77,7 +77,7 @@
 处理结果错误的话，调用reject(Error对象)		
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Promise.reject(error)是和 Promise.resolve(value) 类似的静态方法，是 new Promise() 方法的快捷方式。		&lt;br /&gt;
+&lt;p&gt;Promise.reject(error)是和 Promise.resolve(value) 类似的静态方法，是 new Promise() 方法的快捷方式。		
  比如 Promise.resolve(42); 可以认为是以下代码的语法糖。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;new Promise(function(resolve){		
@@ -142,43 +142,43 @@ Final Task
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;DNS解析&lt;br /&gt;
+    &lt;p&gt;DNS解析
 首先在浏览器输入了一个URL地址，但URL中服务器地址是一个域名而不是一个指定的IP地址，路由器并不知道你想要查找的地址，那么DNS域名解析系统会将该域名解析成ip，而IP地址是唯一的， 每一个ip地址对应网络上的一台计算机。&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;建立网络连接，发送数据包&lt;br /&gt;
-由于以上的努力，已经能够根据ip和端口号与网络上对应的服务器建立连接，浏览器这边会向服务器发送一个数据包，里面包含了大量的信息，但这个数据包有一定的格式。就像我给你邮个快递，也得遵循邮递公司的一些规则吧！我得写上我的身份信息、寄的物品、标明邮递地址….道理是一样的，到了网络中这些规则就是“Http协议(网络协议)”&lt;br /&gt;
+    &lt;p&gt;建立网络连接，发送数据包
+由于以上的努力，已经能够根据ip和端口号与网络上对应的服务器建立连接，浏览器这边会向服务器发送一个数据包，里面包含了大量的信息，但这个数据包有一定的格式。就像我给你邮个快递，也得遵循邮递公司的一些规则吧！我得写上我的身份信息、寄的物品、标明邮递地址….道理是一样的，到了网络中这些规则就是“Http协议(网络协议)”
 http协议是客户端和服务器端两者通信共同遵循的一些规则。主要内容是定义了客户端如何向服务器请求资源，服务器如何响应客户端请求。&lt;/p&gt;
 
-    &lt;p&gt;请求中的POST与 GET方法有什么区别？&lt;br /&gt;
-  1.根据HTTP规范，GET用于信息获取，而且应该是安全的,这里的安全是指非修改的信息，就像在数据库执行查询一样，不会修改数据，也不会增加删减数据，不会影响资源的状态，而post可能会改变数据的原始状态。&lt;br /&gt;
-  2.GET提交的数据最多只有1024字节，理论上POST是没有限制的。&lt;br /&gt;
+    &lt;p&gt;请求中的POST与 GET方法有什么区别？
+  1.根据HTTP规范，GET用于信息获取，而且应该是安全的,这里的安全是指非修改的信息，就像在数据库执行查询一样，不会修改数据，也不会增加删减数据，不会影响资源的状态，而post可能会改变数据的原始状态。
+  2.GET提交的数据最多只有1024字节，理论上POST是没有限制的。
   3.从请求的URL中可以找到一个区别：GET请求的数据会附在URL之后，在浏览器URL栏就能看的。似乎POST比GET更可靠一些，因为它请求把提交的数据放在包体中，地址栏上不可见。（也有的解释说两者都没有长度限制，根本的区别就是一个是获取数据，一个修改数据！）&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;服务器响应请求，返回给浏览器&lt;br /&gt;
-服务器会分解你的数据包，例如你查找的是一个文档，那么服务器可能会返回一个doc文档或者zip压缩资源给你；如果你访问的是一个链接页面，那么服务器相应的返回一个包含HTML/CSS标记文档，这些请求和响应都有一个通用的写法，这些规则也就是前面提到的”http协议”。&lt;br /&gt;
+    &lt;p&gt;服务器响应请求，返回给浏览器
+服务器会分解你的数据包，例如你查找的是一个文档，那么服务器可能会返回一个doc文档或者zip压缩资源给你；如果你访问的是一个链接页面，那么服务器相应的返回一个包含HTML/CSS标记文档，这些请求和响应都有一个通用的写法，这些规则也就是前面提到的”http协议”。
 客户端向服务器请求资源时，除了告诉服务器要请求的资源，同时还会附带一些其他的信息，这部分信息放在”header”部分（服务器响应请求也一样！），主要有请求头(略)和响应头&lt;/p&gt;
 
-    &lt;p&gt;200	OK	一切正常，对GET和POST请求的应答文档跟在后面。&lt;br /&gt;
-  201	Created	服务器已经创建了文档，Location头给出了它的URL。&lt;br /&gt;
+    &lt;p&gt;200	OK	一切正常，对GET和POST请求的应答文档跟在后面。
+  201	Created	服务器已经创建了文档，Location头给出了它的URL。
   202	Accepted	已经接受请求，但处理尚未完成。&lt;/p&gt;
 
-    &lt;p&gt;300	Multiple Choices	客户请求的文档可以在多个位置找到，这些位置已经在返回的文档内列出。如果服务器要提出优先选择，则应该在Location应答头指明。&lt;br /&gt;
-  301	Moved Permanently	永久重定向。&lt;br /&gt;
-  302	Found	临时重定向&lt;br /&gt;
+    &lt;p&gt;300	Multiple Choices	客户请求的文档可以在多个位置找到，这些位置已经在返回的文档内列出。如果服务器要提出优先选择，则应该在Location应答头指明。
+  301	Moved Permanently	永久重定向。
+  302	Found	临时重定向
   304	Not Modified	客户端有缓冲的文档并发出了一个条件性的请求。服务器告 诉客户，原来缓冲的文档还可以继续使用。&lt;/p&gt;
 
-    &lt;p&gt;400	Bad Request	请求出现语法错误。&lt;br /&gt;
-  403	Forbidden	资源不可用。服务器理解客户的请求，但拒绝处理它。通常由于服务器上文件或目录的权限设置导致。&lt;br /&gt;
-  404	Not Found	无法找到指定位置的资源。这也是一个常用的应答。&lt;br /&gt;
+    &lt;p&gt;400	Bad Request	请求出现语法错误。
+  403	Forbidden	资源不可用。服务器理解客户的请求，但拒绝处理它。通常由于服务器上文件或目录的权限设置导致。
+  404	Not Found	无法找到指定位置的资源。这也是一个常用的应答。
   405	Method Not Allowed	请求方法（GET、POST、HEAD、DELETE、PUT、TRACE等）对指定的资源不适用。（HTTP 1.1新）&lt;/p&gt;
 
     &lt;p&gt;500	Internal Server Error	服务器遇到了意料不到的情况，不能完成客户的请求。&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;客户端渲染 &lt;br /&gt;
- 渲染引擎得到html字符串作为输入，然后对html进行转换，转化成能够被DOM处理的形式，接着转换成一个dom树，在解析html的过程，解析到link、script、img等一些请求标签时，会发送请求把对应的内容获取到。这时又会同步进行css的解析，构建出css样式规则应用到dom树上，然后进行一定的布局处理，比如标记节点块在浏览器中的坐标等形成最终的渲染树，最后根据这棵渲染树在浏览器窗口中进行绘制。&lt;br /&gt;
+    &lt;p&gt;客户端渲染 
+ 渲染引擎得到html字符串作为输入，然后对html进行转换，转化成能够被DOM处理的形式，接着转换成一个dom树，在解析html的过程，解析到link、script、img等一些请求标签时，会发送请求把对应的内容获取到。这时又会同步进行css的解析，构建出css样式规则应用到dom树上，然后进行一定的布局处理，比如标记节点块在浏览器中的坐标等形成最终的渲染树，最后根据这棵渲染树在浏览器窗口中进行绘制。
 View&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -309,13 +309,13 @@ RegExp.$2; // &quot;Smith&quot;
         <description>&lt;h2 id=&quot;topleftheight&quot;&gt;各种top、left、height&lt;/h2&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;网页可见区域宽： document.body.clientWidth;&lt;br /&gt;
-网页可见区域高： document.body.clientHeight;&lt;br /&gt;
-网页可见区域宽： document.body.offsetWidth   (包括边线的宽);&lt;br /&gt;
-网页可见区域高： document.body.offsetHeight  (包括边线的宽);&lt;br /&gt;
-网页正文全文宽： document.body.scrollWidth;&lt;br /&gt;
-网页正文全文高： document.body.scrollHeight;&lt;br /&gt;
-网页被卷去的高： document.body.scrollTop;&lt;br /&gt;
+  &lt;p&gt;网页可见区域宽： document.body.clientWidth;
+网页可见区域高： document.body.clientHeight;
+网页可见区域宽： document.body.offsetWidth   (包括边线的宽);
+网页可见区域高： document.body.offsetHeight  (包括边线的宽);
+网页正文全文宽： document.body.scrollWidth;
+网页正文全文高： document.body.scrollHeight;
+网页被卷去的高： document.body.scrollTop;
 网页被卷去的左： document.body.scrollLeft;&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -359,17 +359,17 @@ IE、Opera 认为 offsetHeight 是可视区域 clientHeight 滚动条加边框�
       <item>
         <title>web跨域解决方案</title>
         <description>&lt;h2 id=&quot;web&quot;&gt;web跨域解决方案&lt;/h2&gt;
-&lt;p&gt;我们都知道HTML的同源策略不允许JavaScript进行跨域操作，但随着Web App的功能越来越强，各种跨域的需求催生了无数的跨域手法。&lt;br /&gt;
-   跨域办法大致可以分为两类:&lt;br /&gt;
-    &lt;em&gt;1、一类是hack,比如通过title, navigation等对象传递信息，JSONP可以说是一个最优秀的Hack。&lt;/em&gt;&lt;br /&gt;
+&lt;p&gt;我们都知道HTML的同源策略不允许JavaScript进行跨域操作，但随着Web App的功能越来越强，各种跨域的需求催生了无数的跨域手法。
+   跨域办法大致可以分为两类:
+    &lt;em&gt;1、一类是hack,比如通过title, navigation等对象传递信息，JSONP可以说是一个最优秀的Hack。&lt;/em&gt;
     &lt;em&gt;2、另一类是HTML5支持，一个是Access-Control-Allow-Origin响应头，一个是window.postMessage&lt;/em&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;documentdomain&quot;&gt;设置 document.domain&lt;/h4&gt;
-&lt;p&gt;原理：相同主域名不同子域名下的页面，可以设置document.domain让它们同域&lt;br /&gt;
+&lt;p&gt;原理：相同主域名不同子域名下的页面，可以设置document.domain让它们同域
    限制：同域document提供的是页面间的互操作，需要载入iframe页面&lt;/p&gt;
 
 &lt;h4 id=&quot;jsonp&quot;&gt;JSONP&lt;/h4&gt;
-&lt;p&gt;原理：script是可以跨域的，而且在跨域脚本中可以直接回调当前脚本的函数。&lt;br /&gt;
+&lt;p&gt;原理：script是可以跨域的，而且在跨域脚本中可以直接回调当前脚本的函数。
    限制：需要创建一个DOM对象并且添加到DOM树，只能用于GET方法&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;跨域URL返回的脚本不仅包含数据，还包含一个回调：&lt;/em&gt;&lt;/p&gt;
@@ -402,19 +402,19 @@ IE、Opera 认为 offsetHeight 是可视区域 clientHeight 滚动条加边框�
 &lt;p&gt;$.getJSON与$.get的区别是前者会把responseText转换为JSON，而且当URL具有callback参数时， jQuery将会把它解释为一个JSONP请求，创建一个script标签来完成该请求。&lt;/p&gt;
 
 &lt;h4 id=&quot;windowpostmessage&quot;&gt;window.postMessage&lt;/h4&gt;
-&lt;p&gt;原理：HTML5允许窗口之间发送消息&lt;br /&gt;
+&lt;p&gt;原理：HTML5允许窗口之间发送消息
 限制：浏览器需要支持HTML5，获取窗口句柄后才能相互通信&lt;/p&gt;
 
 &lt;h4 id=&quot;cors&quot;&gt;跨域资源共享（CORS）&lt;/h4&gt;
-&lt;p&gt;原理：服务器设置Access-Control-Allow-OriginHTTP响应头之后，浏览器将会允许跨域请求&lt;br /&gt;
+&lt;p&gt;原理：服务器设置Access-Control-Allow-OriginHTTP响应头之后，浏览器将会允许跨域请求
 限制：浏览器需要支持HTML5，可以支持POST，PUT等方法&lt;/p&gt;
 
 &lt;h4 id=&quot;navigation-&quot;&gt;navigation 对象&lt;/h4&gt;
-&lt;p&gt;原理：iframe之间是共享navigator对象的，用它来传递信息&lt;br /&gt;
+&lt;p&gt;原理：iframe之间是共享navigator对象的，用它来传递信息
 要求：IE6/7&lt;/p&gt;
 
 &lt;h4 id=&quot;src&quot;&gt;有src的标签&lt;/h4&gt;
-&lt;p&gt;原理：所有具有src属性的HTML标签都是可以跨域的，包括img, script&lt;br /&gt;
+&lt;p&gt;原理：所有具有src属性的HTML标签都是可以跨域的，包括img, script
    限制：需要创建一个DOM对象，只能用于GET方法&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://harttle.com/2015/10/10/cross-origin.html&quot;&gt;参考文章&lt;/a&gt;&lt;/p&gt;
@@ -432,15 +432,15 @@ IE、Opera 认为 offsetHeight 是可视区域 clientHeight 滚动条加边框�
         <title>易混淆的方法</title>
         <description>&lt;h2 id=&quot;section&quot;&gt;易混淆的方法&lt;/h2&gt;
 
-&lt;p&gt;parent()：查找&lt;em style=&quot;color:red;&quot;&gt;直接的&lt;/em&gt;父节点&lt;br /&gt;
-  parents()：查找&lt;em style=&quot;color:red;&quot;&gt;所有的&lt;/em&gt;祖先元素&lt;br /&gt;
-  sibling()：查找兄弟节点，不分前后&lt;br /&gt;
-  children()：查找所有子元素，只会找到&lt;em style=&quot;color:red;&quot;&gt;直接的&lt;/em&gt;孩子节点，不会返回所有子孙&lt;br /&gt;
-  find()：会在div元素内 寻找 class为classname的元素。(&lt;em style=&quot;color:red;&quot;&gt;子元素&lt;/em&gt;找)&lt;br /&gt;
+&lt;p&gt;parent()：查找&lt;em style=&quot;color:red;&quot;&gt;直接的&lt;/em&gt;父节点
+  parents()：查找&lt;em style=&quot;color:red;&quot;&gt;所有的&lt;/em&gt;祖先元素
+  sibling()：查找兄弟节点，不分前后
+  children()：查找所有子元素，只会找到&lt;em style=&quot;color:red;&quot;&gt;直接的&lt;/em&gt;孩子节点，不会返回所有子孙
+  find()：会在div元素内 寻找 class为classname的元素。(&lt;em style=&quot;color:red;&quot;&gt;子元素&lt;/em&gt;找)
   filter()：则是筛选div的class为classname的元素。(&lt;em style=&quot;color:red;&quot;&gt;平级&lt;/em&gt;找)&lt;/p&gt;
 
-&lt;p&gt;get()：接受一个索引值参数并返回对应的DOM节点&lt;br /&gt;
-  index()：接受一个DOM节点然后返回其索引值，index(this)返回当前值的索引值&lt;br /&gt;
+&lt;p&gt;get()：接受一个索引值参数并返回对应的DOM节点
+  index()：接受一个DOM节点然后返回其索引值，index(this)返回当前值的索引值
   eq(index)：index为正整数时以0为基数，index为负整数时从集合中的最后一个元素开始倒数（从1开始倒数）&lt;/p&gt;
 </description>
         <pubDate>Wed, 02 Dec 2015 02:05:00 +0800</pubDate>
