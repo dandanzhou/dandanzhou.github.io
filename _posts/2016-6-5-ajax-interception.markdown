@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      支付拦截解决方案
-date:       2016-6-5 19:10:00
+date:       2016-6-5
 tags:
     - Others
 ---	
@@ -16,7 +16,7 @@ tags:
  背景：点击充值的时候后台要我先传金额获取一些数据然后再掉充值接口跳到支付页
  	
  于是出现如下图所示：
- [http://7xnl4q.com1.z0.glb.clouddn.com/fail.png]( http://7xnl4q.com1.z0.glb.clouddn.com/fail.png)
+ ![http://7xnl4q.com1.z0.glb.clouddn.com/fail.png]( http://7xnl4q.com1.z0.glb.clouddn.com/fail.png)
  
  后来在网上查找了原因，原来是这样滴：
     用户自己发起的浏览器不会阻止，如果触发动作是自动执行的则浏览器会阻止打开。（进入ajax是自动的但是ajax执行完）会认为你是弹广告xxxxxxx！想不被阻止就想办法让动作换成用户自己发起的。
@@ -28,8 +28,8 @@ tags:
     
     
  成功后的如下图：
-  [http://7xnl4q.com1.z0.glb.clouddn.com/way.png]( http://7xnl4q.com1.z0.glb.clouddn.com/way.png)
-  [http://7xnl4q.com1.z0.glb.clouddn.com/success.png]( http://7xnl4q.com1.z0.glb.clouddn.com/success.png)
+  ![http://7xnl4q.com1.z0.glb.clouddn.com/way.png]( http://7xnl4q.com1.z0.glb.clouddn.com/way.png)
+  ![http://7xnl4q.com1.z0.glb.clouddn.com/success.png]( http://7xnl4q.com1.z0.glb.clouddn.com/success.png)
   
   
  
