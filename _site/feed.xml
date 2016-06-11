@@ -5,9 +5,81 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 05 Jun 2016 20:05:07 +0800</pubDate>
-    <lastBuildDate>Sun, 05 Jun 2016 20:05:07 +0800</lastBuildDate>
+    <pubDate>Sat, 11 Jun 2016 20:01:37 +0800</pubDate>
+    <lastBuildDate>Sat, 11 Jun 2016 20:01:37 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>web静态资源缓存自动更新</title>
+        <description>&lt;p&gt;核心：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;在每次发布之前，利用Gulp对所有的静态资源进行预处理，重命名为原文件名 + 文件MD5值 + 文件后缀名的形式。比如register.js重命名为register-87f3f22ee7.js
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;步骤：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1、先用npm下载gulp-clean  gulp-rev  gulp-rev-collector这几个依赖，其次配置好gulpfile.js里面的内容（已配置好），有兴趣可去项目根目录里面查看；
+2、如果第一步已经完成，如果你只是修改了www端得css或者ts，依次执行gulp www-clean( 取决于你gulpfile.js里面的配置) 、gulp ，然后在你配置的相关文件里面就会生成对应的rev-manifest.json（路径：public/assets/rev/css/和public/assets/rev/js/），如下图所示
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache1.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache1.png&quot; /&gt;
+&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache2.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;3、到这里对应css名称就会发生对应的变化
+但是js没有，为什么呢？？？？？？ 因为我们项目里面用的是require模块加载，在每个html里面都是require对应的js，而不是普通的&amp;lt;script src=&quot;&quot;&amp;gt;&amp;lt;/script&amp;gt;。
+在网上找了一些相关资料，有两种还凑合：
+(1)在require.congfig配置里面加上 urlArgs: &quot;bust=&quot; +  (new Date()).getTime()，但这只适合开发环境
+(2)在每次发布的时候需要根据rev-manifest在require.congfig对模块进行mapping，将配置文件以内联JS的形式写入到模版页面里面，类似于：
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache3.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;看起来有点麻烦哈，因为每次修改完js或者pull代码获得更新的js，rev-manifest.json里面对应的js名称后的一串字符会自动变化，但是require.congfig里面需要我们手动去改变，这需要我们细心啊啊啊啊啊！！！！
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 11 Jun 2016 00:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2016/06/11/web-clear-cache/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2016/06/11/web-clear-cache/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>支付拦截解决方案</title>
+        <description>&lt;p&gt;额，先说点题外话哈。真实惭愧啊，距离上次写博客差不多有两个月的时间了。该写了，直接进入正题吧，哈哈哈哈…&lt;/p&gt;
+
+&lt;p&gt;如果你是直接点击充值跳到另外一个页面，不用向第三方传一些数据，以下就不用看了。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;支付拦截解决方案&lt;/h2&gt;
+&lt;p&gt;上个星期和后端做支付对接的时候，遇到一个小问题：点击充值按钮进行充值跳到第三方充值页的时候，充值页被拦截了！！！！！&lt;/p&gt;
+
+&lt;p&gt;背景：点击充值的时候后台要我先传金额获取一些数据然后再掉充值接口跳到支付页&lt;/p&gt;
+
+&lt;p&gt;于是出现如下图所示：
+ &lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/fail.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/fail.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;后来在网上查找了原因，原来是这样滴：
+    用户自己发起的浏览器不会阻止，如果触发动作是自动执行的则浏览器会阻止打开。（进入ajax是自动的但是ajax执行完）会认为你是弹广告xxxxxxx！想不被阻止就想办法让动作换成用户自己发起的。&lt;/p&gt;
+
+&lt;p&gt;所以有了以下解决方案：
+    由于之前跳到支付页用的xx.submit()，是在ajax内自动执行完的，并不是用户自己发起的；所以我们需要一个过渡，就是把这个动作赋予用户自己完成。
+    我的想法是点击充值时让先弹出一个窗口确定输入的金额，然后让用户点击确定调用xx.sumbit();经过试验真的成功了。&lt;/p&gt;
+
+&lt;p&gt;成功后的如下图：
+  &lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/way.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/way.png&quot; /&gt;
+  &lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/success.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/success.png&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 05 Jun 2016 00:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2016/06/05/ajax-interception/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2016/06/05/ajax-interception/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
     
       <item>
         <title>神奇的BFC</title>
@@ -448,92 +520,6 @@ IE、Opera 认为 offsetHeight 是可视区域 clientHeight 滚动条加边框�
         <guid isPermaLink="true">https://dandanzhou.github.io/2015/12/02/parents-children/</guid>
         
         <category>Jquery</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>tab切换</title>
-        <description>&lt;h2 id=&quot;tab&quot;&gt;tab切换&lt;/h2&gt;
-
-&lt;p&gt;HTML部分&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;ul class=&quot;tabs&quot; id=&quot;tab&quot;&amp;gt;
-    &amp;lt;li&amp;gt;&amp;lt;a href=&quot;javascript:void(0)&quot; class=&quot;current&quot;&amp;gt;tab切换一&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-    &amp;lt;li&amp;gt;&amp;lt;a href=&quot;javascript:void(0)&quot; &amp;gt;tab切换二&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-    &amp;lt;li&amp;gt;&amp;lt;a href=&quot;javascript:void(0)&quot;&amp;gt;tab切换三&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;
-
-&amp;lt;div class=&quot;container&quot; id=&quot;contain&quot;&amp;gt;
-    &amp;lt;div class=&quot;con&quot;&amp;gt;显示内容一&amp;lt;/div&amp;gt;
-    &amp;lt;div class=&quot;con&quot;&amp;gt;显示内容二&amp;lt;/div&amp;gt;
-    &amp;lt;div class=&quot;con&quot;&amp;gt;显示内容三&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Jquery部分&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$(function(){
-    tabs($(&quot;#tab a&quot;), $(&#39;#contain .con&#39;));  
-});
-
-var tabs = function(tab, con){
-    tab.click(function(){
-        var dIndex = tab.index(this);
-        tab.removeClass(&#39;current&#39;);
-        $(this).addClass(&#39;current&#39;);
-        con.hide();
-        con.eq(dIndex).show();
-    });    
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Fri, 20 Nov 2015 17:00:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/11/20/tab-change/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/11/20/tab-change/</guid>
-        
-        <category>Jquery</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>文字向上滚动</title>
-        <description>&lt;h2 id=&quot;section&quot;&gt;文字向上滚动&lt;/h2&gt;
-
-&lt;p&gt;HTML部分&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;content_three&quot; id=&quot;content_three&quot;&amp;gt;
-	&amp;lt;div class=&quot;list_all&quot; id=&quot;list_all&quot;&amp;gt;&amp;lt;/div&amp;gt;
-	&amp;lt;div class=&quot;list_all&quot; id=&quot;list_copy&quot;&amp;gt;&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;js部分&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var speed = 40 ;
-var content_three = document.getElementById(&quot;content_three&quot;);  
-var list_copy = document.getElementById(&quot;list_copy&quot;);  
-var list_all = document.getElementById(&quot;list_all&quot;);  
-list_copy.innerHTML = list_all.innerHTML + list_all.innerHTML;
-
-function Marquee() {  
-    if (list_copy.offsetTop - content_three.scrollTop &amp;lt;= 0)  
-        content_three.scrollTop -= list_all.offsetHeight ; 
-    else {  
-        content_three.scrollTop++ ; 
-    }  
-}  
-var MyMar = setInterval(Marquee, speed);  
-content_three.onmouseover = function() { clearInterval(MyMar)} 
-content_three.onmouseout = function() { MyMar = setInterval(Marquee, speed)} 
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Fri, 13 Nov 2015 04:07:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/11/13/scroll-up/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/11/13/scroll-up/</guid>
-        
-        <category>JavaScript</category>
         
         
       </item>
