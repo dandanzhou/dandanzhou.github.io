@@ -5,9 +5,31 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 11 Jun 2016 20:01:37 +0800</pubDate>
-    <lastBuildDate>Sat, 11 Jun 2016 20:01:37 +0800</lastBuildDate>
+    <pubDate>Sun, 24 Jul 2016 19:40:41 +0800</pubDate>
+    <lastBuildDate>Sun, 24 Jul 2016 19:40:41 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>随笔</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;想到啥就写啥了&lt;/h2&gt;
+
+&lt;p&gt;7月的尾巴渐渐逼近，不得不感叹时间之飞快，这个月貌似发生的事儿还是挺多的，不过总算是挺过来了。。。&lt;/p&gt;
+
+&lt;p&gt;新公司也没有之前那么忙了，该多花点功夫在新技术了，上个星期借的书，得快点看完了，感觉自己有时候开始有点懒，还是得慢慢改掉这个坏毛病。&lt;/p&gt;
+
+&lt;p&gt;偶然看到的几句话还是挺激励我的：放下懒惰 ––奋斗改变命运，绝招就是把一件平凡的小事做到炉火纯青，就是绝活。提醒自己，记住自己的提醒，上进的你，快乐的你，健康的你，善良的你，一定会有一个灿烂的人生。&lt;/p&gt;
+
+&lt;p&gt;减肥和学习是女人的终生事业啊，哈哈哈哈，已经减了两个星期，初见成效，但还没达到想要的效果，还得继续努力；学习吧，定是不能落下的，按照自己的脚步，慢慢来，总会有属于我的小幸运～～&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 23 Jul 2016 00:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2016/07/23/others/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2016/07/23/others/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
     
       <item>
         <title>web静态资源缓存自动更新</title>
@@ -496,30 +518,6 @@ IE、Opera 认为 offsetHeight 是可视区域 clientHeight 滚动条加边框�
         <guid isPermaLink="true">https://dandanzhou.github.io/2015/12/16/web-cross/</guid>
         
         <category>Others</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>易混淆的方法</title>
-        <description>&lt;h2 id=&quot;section&quot;&gt;易混淆的方法&lt;/h2&gt;
-
-&lt;p&gt;parent()：查找&lt;em style=&quot;color:red;&quot;&gt;直接的&lt;/em&gt;父节点
-  parents()：查找&lt;em style=&quot;color:red;&quot;&gt;所有的&lt;/em&gt;祖先元素
-  sibling()：查找兄弟节点，不分前后
-  children()：查找所有子元素，只会找到&lt;em style=&quot;color:red;&quot;&gt;直接的&lt;/em&gt;孩子节点，不会返回所有子孙
-  find()：会在div元素内 寻找 class为classname的元素。(&lt;em style=&quot;color:red;&quot;&gt;子元素&lt;/em&gt;找)
-  filter()：则是筛选div的class为classname的元素。(&lt;em style=&quot;color:red;&quot;&gt;平级&lt;/em&gt;找)&lt;/p&gt;
-
-&lt;p&gt;get()：接受一个索引值参数并返回对应的DOM节点
-  index()：接受一个DOM节点然后返回其索引值，index(this)返回当前值的索引值
-  eq(index)：index为正整数时以0为基数，index为负整数时从集合中的最后一个元素开始倒数（从1开始倒数）&lt;/p&gt;
-</description>
-        <pubDate>Wed, 02 Dec 2015 02:05:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/12/02/parents-children/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/12/02/parents-children/</guid>
-        
-        <category>Jquery</category>
         
         
       </item>
