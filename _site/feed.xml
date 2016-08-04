@@ -5,9 +5,43 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 24 Jul 2016 19:40:41 +0800</pubDate>
-    <lastBuildDate>Sun, 24 Jul 2016 19:40:41 +0800</lastBuildDate>
+    <pubDate>Thu, 04 Aug 2016 18:19:37 +0800</pubDate>
+    <lastBuildDate>Thu, 04 Aug 2016 18:19:37 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>webpack打包工具</title>
+        <description>&lt;p&gt;最近在webpack上折腾了几天，终于有了眉目，差点就要放弃了，折腾的过程中最大的收获就是：掌握了学习新东西的方法～～&lt;/p&gt;
+
+&lt;h2 id=&quot;webpack&quot;&gt;折腾的第一点:下载webpack&lt;/h2&gt;
+&lt;p&gt;最开始全局下载webpack,也就是npm install -g webpack比较顺利，但是后来在根目录下npm install webpack，一直报错如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/webpack1.jpg&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/webpack1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最关键的是我在别人电脑上一安装就成了－－
+在网上查了各种解决方案，但最终都木有解决问题，后来突然想到了之前装gulp的时候，每次装到gulp-sass时会出现问题（后来直接把以前好的gulp－sass复制了过来）；
+于是我决定把根目录下的node_modules全删了，重新安装，当安装到gulp－sass,同样出现了问题，在网上找到了一个解决方案，直接执行：npm install rebulid,终于成功安装了gulp;
+接着在根目录下安装webpack时，成功了！！！&lt;/p&gt;
+
+&lt;h2 id=&quot;webpack-1&quot;&gt;折腾的第二点：webpack的配置文件及运行&lt;/h2&gt;
+
+&lt;p&gt;为了实际演示，我在目前的项目中，用webpack打包了ts文件如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/webpack2.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/webpack2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在做好配置后，运行webpack,也出现了问题，原因是在根目录下没有下载ts-loader,后来才知道，每一种模块对应的loader都应该先下载（只要配置中有就要下载）&lt;/p&gt;
+
+&lt;p&gt;目前，只是webpack有了一个大概的了解和大概的实际操作，还需我继续去探索～～&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 04 Aug 2016 00:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2016/08/04/webpack/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2016/08/04/webpack/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
     
       <item>
         <title>随笔</title>
@@ -446,78 +480,6 @@ IE、Opera 认为 offsetHeight 是可视区域 clientHeight 滚动条加边框�
         <guid isPermaLink="true">https://dandanzhou.github.io/2015/12/21/top-left-height/</guid>
         
         <category>JavaScript</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>web跨域解决方案</title>
-        <description>&lt;h2 id=&quot;web&quot;&gt;web跨域解决方案&lt;/h2&gt;
-&lt;p&gt;我们都知道HTML的同源策略不允许JavaScript进行跨域操作，但随着Web App的功能越来越强，各种跨域的需求催生了无数的跨域手法。
-   跨域办法大致可以分为两类:
-    &lt;em&gt;1、一类是hack,比如通过title, navigation等对象传递信息，JSONP可以说是一个最优秀的Hack。&lt;/em&gt;
-    &lt;em&gt;2、另一类是HTML5支持，一个是Access-Control-Allow-Origin响应头，一个是window.postMessage&lt;/em&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;documentdomain&quot;&gt;设置 document.domain&lt;/h4&gt;
-&lt;p&gt;原理：相同主域名不同子域名下的页面，可以设置document.domain让它们同域
-   限制：同域document提供的是页面间的互操作，需要载入iframe页面&lt;/p&gt;
-
-&lt;h4 id=&quot;jsonp&quot;&gt;JSONP&lt;/h4&gt;
-&lt;p&gt;原理：script是可以跨域的，而且在跨域脚本中可以直接回调当前脚本的函数。
-   限制：需要创建一个DOM对象并且添加到DOM树，只能用于GET方法&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;跨域URL返回的脚本不仅包含数据，还包含一个回调：&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  // URL: http://b.a.com/foo
-    var data = {
-        foo: &#39;bar&#39;,
-        bar: &#39;foo&#39;
-    };
-    callback(data);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;然后在我们在主站http://a.com中，可以这样来跨域获取http://b.a.com的数据：&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    // URL: http://a.com/foo
-    var callback = function(data){
-        // 处理跨域请求得到的数据
-    };
-    var script = $(&#39;&amp;lt;script&amp;gt;&#39;, {src: &#39;http://b.a.com/bar&#39;});
-    $(&#39;body&#39;).append(script);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;其实jQuery已经封装了JSONP的使用，我们可以这样来&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    $.getJSON( &quot;http://b.a.com/bar?callback=callback&quot;, function( data ){
-        // 处理跨域请求得到的数据
-    });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;$.getJSON与$.get的区别是前者会把responseText转换为JSON，而且当URL具有callback参数时， jQuery将会把它解释为一个JSONP请求，创建一个script标签来完成该请求。&lt;/p&gt;
-
-&lt;h4 id=&quot;windowpostmessage&quot;&gt;window.postMessage&lt;/h4&gt;
-&lt;p&gt;原理：HTML5允许窗口之间发送消息
-限制：浏览器需要支持HTML5，获取窗口句柄后才能相互通信&lt;/p&gt;
-
-&lt;h4 id=&quot;cors&quot;&gt;跨域资源共享（CORS）&lt;/h4&gt;
-&lt;p&gt;原理：服务器设置Access-Control-Allow-OriginHTTP响应头之后，浏览器将会允许跨域请求
-限制：浏览器需要支持HTML5，可以支持POST，PUT等方法&lt;/p&gt;
-
-&lt;h4 id=&quot;navigation-&quot;&gt;navigation 对象&lt;/h4&gt;
-&lt;p&gt;原理：iframe之间是共享navigator对象的，用它来传递信息
-要求：IE6/7&lt;/p&gt;
-
-&lt;h4 id=&quot;src&quot;&gt;有src的标签&lt;/h4&gt;
-&lt;p&gt;原理：所有具有src属性的HTML标签都是可以跨域的，包括img, script
-   限制：需要创建一个DOM对象，只能用于GET方法&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://harttle.com/2015/10/10/cross-origin.html&quot;&gt;参考文章&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 16 Dec 2015 04:00:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/12/16/web-cross/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/12/16/web-cross/</guid>
-        
-        <category>Others</category>
         
         
       </item>
