@@ -5,9 +5,45 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 04 Aug 2016 18:19:37 +0800</pubDate>
-    <lastBuildDate>Thu, 04 Aug 2016 18:19:37 +0800</lastBuildDate>
+    <pubDate>Wed, 09 Nov 2016 17:03:28 +0800</pubDate>
+    <lastBuildDate>Wed, 09 Nov 2016 17:03:28 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>总结及计划</title>
+        <description>&lt;p&gt;打开博客，突然发现自己已经好久没有写博客了，再忙也得抽时间写写博客。&lt;/p&gt;
+
+&lt;p&gt;来到新公司将近半年了，感觉收获的不少也不是很多，大部分还是自己很少总结。今天刚好有时间，总结一下顺便计划下年底前要完成的任务。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;总结&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;1、了解到了typeSript；
+
+    *TypeScript增加了可选类型、类和模块
+    *TypeSript可编译成可读的、标准的JavaScript（ts编译成js）
+    *TypeScript扩展了JavaScript语法，已有的JavaScript代码可直接与现有的TypeScript一起运行
+    *Arrow函数（类似于c#的Lambda函数）
+
+2、熟悉了服务器上一些基本的linux命令；
+
+3、前端一些细小的知识点得到了理解。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;11月底要完成的事&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;1、W3C/HTTP规范、HTTP协议、Web安全；
+2、继续把phython看完并做出一个demo；
+3、熟练编写常用的数据结构和算法；
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Wed, 09 Nov 2016 00:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2016/11/09/plan/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2016/11/09/plan/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
     
       <item>
         <title>webpack打包工具</title>
@@ -426,58 +462,6 @@ RegExp.$2; // &quot;Smith&quot;
         <pubDate>Tue, 12 Jan 2016 22:12:00 +0800</pubDate>
         <link>https://dandanzhou.github.io/2016/01/12/zhengze/</link>
         <guid isPermaLink="true">https://dandanzhou.github.io/2016/01/12/zhengze/</guid>
-        
-        <category>JavaScript</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>各种top、left、height</title>
-        <description>&lt;h2 id=&quot;topleftheight&quot;&gt;各种top、left、height&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;网页可见区域宽： document.body.clientWidth;
-网页可见区域高： document.body.clientHeight;
-网页可见区域宽： document.body.offsetWidth   (包括边线的宽);
-网页可见区域高： document.body.offsetHeight  (包括边线的宽);
-网页正文全文宽： document.body.scrollWidth;
-网页正文全文高： document.body.scrollHeight;
-网页被卷去的高： document.body.scrollTop;
-网页被卷去的左： document.body.scrollLeft;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;假设 obj 为某个 HTML 控件。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;obj.offsetTop 指 obj 距离上方或上层控件的位置，整型，单位像素。
-obj.offsetLeft 指 obj 距离左方或上层控件的位置，整型，单位像素。
-obj.offsetWidth 指 obj 控件自身的宽度，整型，单位像素。
-obj.offsetHeight 指 obj 控件自身的高度，整型，单位像素。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;offsetTop 与 style.top 的区别&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;1、offsetTop 返回的是数字，而 style.top 返回的是字符串，除了数字外还带有单位：px。
-2、offsetTop 只读，而 style.top 可读写。
-3、如果没有给 HTML 元素指定过 top 样式，则 style.top 返回的是空字符串。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;offsetWidth 与 style.width 的区别&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;如对象的宽度设定值为百分比宽度,则无论页面变大还是变小,style.width都返回此百分比,而offsetWidth则返回在不同页面中对象的宽度值而不是百分比值
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;clientHeight、offsetHeight和scrollHeight 的区别&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;clientHeight 就是透过浏览器看内容的这个区域高度。
-NS（Netscape）、 FF （FireFox）认为 offsetHeight 和 scrollHeight 都是网页内容高度，只不过当网页内容高度小于等于 clientHeight 时，scrollHeight 的值是 clientHeight，而 offsetHeight 可以小于 clientHeight。
-IE、Opera 认为 offsetHeight 是可视区域 clientHeight 滚动条加边框。scrollHeight 则是网页内容实际高度。
-&lt;/code&gt;&lt;/pre&gt;
-
-</description>
-        <pubDate>Mon, 21 Dec 2015 06:00:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2015/12/21/top-left-height/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2015/12/21/top-left-height/</guid>
         
         <category>JavaScript</category>
         

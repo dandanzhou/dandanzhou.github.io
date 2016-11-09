@@ -1,0 +1,31 @@
+---
+layout:     post
+title:      总结及计划
+date:       2016-11-09
+tags:
+    - Others
+---	
+
+打开博客，突然发现自己已经好久没有写博客了，再忙也得抽时间写写博客。
+
+来到新公司将近半年了，感觉收获的不少也不是很多，大部分还是自己很少总结。今天刚好有时间，总结一下顺便计划下年底前要完成的任务。
+
+## 总结
+
+    1、了解到了typeSript；
+
+        *TypeScript增加了可选类型、类和模块
+        *TypeSript可编译成可读的、标准的JavaScript（ts编译成js）
+        *TypeScript扩展了JavaScript语法，已有的JavaScript代码可直接与现有的TypeScript一起运行
+        *Arrow函数（类似于c#的Lambda函数）
+
+    2、熟悉了服务器上一些基本的linux命令；
+
+    3、前端一些细小的知识点得到了理解。
+
+
+## 11月底要完成的事
+
+    1、W3C/HTTP规范、HTTP协议、Web安全；
+    2、继续把phython看完并做出一个demo；
+    3、熟练编写常用的数据结构和算法；
