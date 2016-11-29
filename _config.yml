@@ -12,7 +12,7 @@ github_username:    dandanzhou
 
 
 # Build settings
-highlighter: pygments
+highlighter: rogue
 permalink: pretty
 paginate: 20
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
