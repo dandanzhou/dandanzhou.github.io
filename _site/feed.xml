@@ -5,9 +5,40 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 09 Nov 2016 17:12:21 +0800</pubDate>
-    <lastBuildDate>Wed, 09 Nov 2016 17:12:21 +0800</lastBuildDate>
+    <pubDate>Tue, 29 Nov 2016 16:22:47 +0800</pubDate>
+    <lastBuildDate>Tue, 29 Nov 2016 16:22:47 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>《http图解》读后感</title>
+        <description>&lt;p&gt;读了《http图解》想到了去年面试的时候，面试官问过我一个问题：url输入浏览器到页面呈现给我们，中间发生了什么？当时听到这个问题的时候脑子里空空如也~~如今回想起来，如果面试官如果再次问起，我会怎样回答呢？
+Now,我会给出我自己的理解：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1、url输入到浏览器，负责域名解析的DNS服务会通过域名查找对应的IP地址（也就是获得url对应的ip地址）；
+2、利用TCP/IP协议族进行网络通信，发送数据包，建立网络连接。客户端（浏览器）会向服务器端发送请求，服务端会响应客户端的请求。
+其中，客户端（浏览器）向服务器端发送请求，发送端会经历应用层（http报文）-&amp;gt;传输层（增加TCP首部）-&amp;gt;网络层（IP数据包，增加IP首部）-&amp;gt;数据链路层（增加以太网首部）；服务端则相反。
+3、客户端渲染，渲染引擎对html进行转换，转化成能够被DOM处理的形式，接着转换成一个dom树，在解析html的过程，会发送请求把对应的内容获取到，同时进行css的解析，构建出css样式规则应用到dom树上，然后进行一定的布局处理，最后根据这棵渲染树在浏览器窗口中进行绘制。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以下这张图（http图解中的）可以诠释1、2过程：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/http.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;http&quot;&gt;http报文&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/http1.jpeg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/http2.jpeg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/http3.jpeg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/http4.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 29 Nov 2016 00:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2016/11/29/http-reading/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2016/11/29/http-reading/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
     
       <item>
         <title>总结及计划</title>
@@ -393,75 +424,6 @@ alert(GetQueryString(&quot;q&quot;));
         <pubDate>Thu, 14 Jan 2016 22:12:00 +0800</pubDate>
         <link>https://dandanzhou.github.io/2016/01/14/usually-js%E6%AD%A3%E5%88%99/</link>
         <guid isPermaLink="true">https://dandanzhou.github.io/2016/01/14/usually-js%E6%AD%A3%E5%88%99/</guid>
-        
-        <category>JavaScript</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>JS正则表达式总结</title>
-        <description>&lt;h2 id=&quot;js&quot;&gt;JS正则表达式总结&lt;/h2&gt;
-&lt;p&gt;正则表达式通常用于两种任务：1.验证，2.搜索/替换。&lt;/p&gt;
-
-&lt;p&gt;*字符类匹配&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[...]	方括号内的任意字符
-[^...]	不在方括号内的任意字符
-.	除了换行符和其他Unicode行终止符之外的任意字符
-\w	任何ASCII字符组成的单词，等价于[a-zA-Z0-9]
-\W	任何不是ASCII字符组成的单词，等价于[^a-zA-Z0-9]
-\s	任何Unicode空白符
-\S	任何非Unicode空白符的字符
-\d	任何ASCII数字，介于[0-9]
-\D	除了ASCII数字之外的任何字符，等价于[^0-9]
-\b	退格直接量
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;*重复字符匹配&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{n,m}	匹配前一项至少n次，但不能超过m次
-{n,}	匹配前一项n次或更多次
-{n}	匹配前一项n次
-？	匹配前一项0次或者1次，也就是说前一项是可选的，等价于{0，1}
-+	匹配前一项1次或多次，等价于{1，}
-*	匹配前一项0次或多次，等价于{0，}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;*正则表达式修饰符&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;i        执行不区分大小写的匹配
-g        执行一个全局匹配，即找到所有匹配而非一次匹配
-m        多行匹配模式，^匹配一行的开头和字符串开头，$匹配行的结束和字符串的结尾
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;*RegExp的方法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;test()：检索字符串中的指定值。返回值是布尔值。
-exec()：返回一个数组，数组中的第一个条目是第一个匹配，其他的是反向引用
-compile()：既可以改变检索模式，也可以添加或删除第二个参数。 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;*String 对象中的正则表达式方法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;match(pattern)	返回 pattern 中的子串或 null
-replace(pattern, replacement)	用 replacement 替换 pattern
-search(pattern)	返回字符串中 pattern 开始位置
-split(pattern)	返回字符串按指定 pattern 拆分的数组
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;*特殊字符&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var re = /(\w+)\s(\w+)/;
-var str = &#39;John Smith&#39;;
-str.replace(re, &#39;$2, $1&#39;); // &quot;Smith, John&quot;
-RegExp.$1; // &quot;John&quot;
-RegExp.$2; // &quot;Smith&quot;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Tue, 12 Jan 2016 22:12:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2016/01/12/zhengze/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2016/01/12/zhengze/</guid>
         
         <category>JavaScript</category>
         
