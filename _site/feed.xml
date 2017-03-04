@@ -5,9 +5,145 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 29 Nov 2016 16:22:47 +0800</pubDate>
-    <lastBuildDate>Tue, 29 Nov 2016 16:22:47 +0800</lastBuildDate>
+    <pubDate>Sat, 04 Mar 2017 17:14:23 +0800</pubDate>
+    <lastBuildDate>Sat, 04 Mar 2017 17:14:23 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>面试不会问题总结</title>
+        <description>&lt;h4 id=&quot;section&quot;&gt;1、提供一种方法同时检测基本类型与引用类型&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;functipn toType(value){
+    return ({}).toString.call(value).match(/\s[a-zA-Z]/)[1].toLowerCase();
+}
+
+toType(&#39;1111&#39;)     //&quot;string&quot;
+toType([&#39;1&#39;,&#39;2&#39;])  //&quot;array&quot;
+toType(new Date);  //&quot;date&quot;
+toType(function foo() {console.log(&quot;Test&quot;)}); // &quot;function&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;2、垃圾回收机制&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;两种策略来实现垃圾回收：标记清除 和 引用计数
+*标记清除：运行时给所有变量添加上标记，结束时去掉；此后，如果变量再被标记则表示此变量准备被删除
+*引用计数：跟踪记录每个值被引用的次数，当声明一个变量并将一个引用类型的值赋给该变量时，这个值的引用次数就是1，如果这个值再被赋值给另一个变量，则引用次数加1。相反，如果一个变量脱离了该值的引用，则该值引用次数减1，当次数为0时，就会等待垃圾收集器的回收。这个方式存在一个比较大的问题就是循环引用，就是说A对象包含一个指向B的指针，对象B也包含一个指向A的引用。 这就可能造成大量内存得不到回收（内存泄露），因为它们的引用次数永远不可能是 0 。
+举个例子
+
+        //这段代码为什么会造成内存泄露？
+        window.onload = function(){
+            var el = document.getElementById(&quot;id&quot;);
+            // 执行这段代码的时候，将匿名函数对象赋值给el的onclick属性；然后匿名函数内部又引用了el对象，存在循环引用，所以不能被回收；
+            el.onclick = function(){
+                alert(el.id);
+            }
+        }
+
+        //解决方法：
+        window.onload = function(){
+            var el = document.getElementById(&quot;id&quot;);
+            var id = el.id; //解除循环引用
+            el.onclick = function(){
+                alert(id);
+            }
+            el = null; // 将闭包引用的外部函数中活动对象清除
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;bindapplycall&quot;&gt;3、bind与apply、call的比较&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;//改变this指向func
+func.call (this ,  arg1,  arg2 );
+func.apply (this ,  [arg1 ,  arg2])
+
+//也是可以改变函数体内 this 的指向
+var  foo  = {
+        bar :  1,
+        eventBind:  function(){
+            $(&#39;.someClass&#39; ).on (&#39;click&#39; ,function (event )  {
+            /* Act on the event */
+            console. log( this. bar);  //1
+            }.bind (this ));
+        }
+    }
+
+*apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；
+*apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文；
+*apply 、 call 、bind 三者都可以利用后续参数传参；
+*bind是返回对应函数，便于稍后调用(回调执行的时候)；apply、call则是立即调用 。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;hashrouter&quot;&gt;4、hash、router&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;//hash
+location.hash则可以用来获取或设置页面的标签值。比如http://domain/#admin的location.hash=”#admin”
+
+//router
+*hash形式，当url的hash发生改变时，触发hashchange注册的回调，回调中去进行不同的操作，进行不同的内容的展示。
+     &amp;lt;!DOCTYPE html&amp;gt;
+    &amp;lt;html lang=&quot;en&quot;&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;
+        &amp;lt;title&amp;gt;router&amp;lt;/title&amp;gt;
+    &amp;lt;/head&amp;gt;
+    &amp;lt;body&amp;gt;
+    &amp;lt;ul&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#/&quot;&amp;gt;turn white&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#/blue&quot;&amp;gt;turn blue&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&quot;#/green&quot;&amp;gt;turn green&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+    &amp;lt;script&amp;gt;
+        function Router() {
+            this.routes = {};
+            this.currentUrl = &#39;&#39;;
+        }
+        Router.prototype.route = function(path, callback) {
+            this.routes[path] = callback || function(){};
+        };
+        Router.prototype.refresh = function() {
+            this.currentUrl = location.hash.slice(1) || &#39;/&#39;;
+            this.routes[this.currentUrl]();
+        };
+        Router.prototype.init = function() {
+            window.addEventListener(&#39;load&#39;, this.refresh.bind(this), false);
+            window.addEventListener(&#39;hashchange&#39;, this.refresh.bind(this), false);
+        };
+        window.Router = new Router();
+        window.Router.init();
+        var content = document.querySelector(&#39;body&#39;);
+        // change Page anything
+        function changeBgColor(color) {
+            content.style.backgroundColor = color;
+        }
+        Router.route(&#39;/&#39;, function() {
+            changeBgColor(&#39;white&#39;);
+        });
+        Router.route(&#39;/blue&#39;, function() {
+            changeBgColor(&#39;blue&#39;);
+        });
+        Router.route(&#39;/green&#39;, function() {
+            changeBgColor(&#39;green&#39;);
+        });
+    &amp;lt;/script&amp;gt;
+    &amp;lt;/body&amp;gt;
+    &amp;lt;/html&amp;gt;
+
+ *History API来处理。
+ 链接：https://www.renfei.org/profile/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;spa&quot;&gt;5、SPA&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;http://web.jobbole.com/86558/
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 04 Mar 2017 00:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2017/03/04/%E9%9D%A2%E8%AF%95%E4%B8%AD%E4%B8%8D%E4%BC%9A%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2017/03/04/%E9%9D%A2%E8%AF%95%E4%B8%AD%E4%B8%8D%E4%BC%9A%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
     
       <item>
         <title>《http图解》读后感</title>
@@ -381,49 +517,6 @@ View&lt;/p&gt;
         <pubDate>Wed, 09 Mar 2016 04:00:00 +0800</pubDate>
         <link>https://dandanzhou.github.io/2016/03/09/url/</link>
         <guid isPermaLink="true">https://dandanzhou.github.io/2016/03/09/url/</guid>
-        
-        <category>JavaScript</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Js常用正则</title>
-        <description>&lt;h2 id=&quot;js&quot;&gt;Js常用正则&lt;/h2&gt;
-&lt;p&gt;前端开发中总避免不了使用一些正则表达式来处理一些问题，下面就列常用的几例&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;字符串去重&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code&gt;var str = &quot;adsfjjbkk&quot;;  
-// \1匹配第一个子串  
-// 只去除连续重复  
-console.log(str.replace(/(.)(\1)+/g,function($1,$2,$3){  
-    return $2;  
-}));// adsfjbk
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;js获取URL中的参数&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code&gt;function GetQueryString(name) {
-    var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + name + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;, &quot;i&quot;);
-    var r = window.location.search.substr(1).match(reg); //获取url中&quot;?&quot;符后的字符串并正则匹配
-    var context = &quot;&quot;;
-    if (r != null)
-    context = r[2];
-    reg = null;
-    r = null;
-    return context == null || context == &quot;&quot; || context == &quot;undefined&quot; ? &quot;&quot; : context;
-}
-alert(GetQueryString(&quot;q&quot;));
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Thu, 14 Jan 2016 22:12:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2016/01/14/usually-js%E6%AD%A3%E5%88%99/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2016/01/14/usually-js%E6%AD%A3%E5%88%99/</guid>
         
         <category>JavaScript</category>
         

@@ -115,6 +115,28 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2017/03/04/%E9%9D%A2%E8%AF%95%E4%B8%AD%E4%B8%8D%E4%BC%9A%E7%9A%84%E9%97%AE%E9%A2%98/">
+        <h2 class="post-title">            面试不会问题总结
+        </h2>
+        
+        <div class="post-content-preview">
+            1、提供一种方法同时检测基本类型与引用类型
+
+functipn toType(value){
+    return ({}).toString.call(value).match(/\s[a-zA-Z]/)[1].toLowerCase();
+}
+
+toType('1111')     //"string"
+toType(['1','2'])  //"array"
+toType(new Da...
+        </div>
+    </a>
+    <p class="post-meta">Posted by Daisydan on March 4, 2017</p>
+        
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2016/11/29/http-reading/">
         <h2 class="post-title">            《http图解》读后感
         </h2>
@@ -537,29 +559,6 @@ CSS
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2015/10/16/css-specifications/">
-        <h2 class="post-title">            css书写规范、顺序
-        </h2>
-        
-        <div class="post-content-preview">
-            css书写顺序
-
-  1.位置属性（postion、top、right、z-index、display、float等）
-  2.大小（width、height、padding、margin等）
-  3.文字系列（font、line-height、letter-sapce等）
-  4.背景（background、border等）
-  5.其他（animation、transtion等）
-
-
-c...
-        </div>
-    </a>
-    <p class="post-meta">Posted by Daisydan on October 16, 2015</p>
-        
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -588,7 +587,7 @@ c...
                     <div class="tags">
         				
                             
-                				<a href="/tags/#Others" title="Others" rel="9">
+                				<a href="/tags/#Others" title="Others" rel="10">
                                     Others
                                 </a>
                             
@@ -708,7 +707,7 @@ c...
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Daisydan 2016
+                    Copyright &copy; Daisydan 2017
                 </p>
             </div>
         </div>
