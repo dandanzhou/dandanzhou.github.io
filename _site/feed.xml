@@ -5,9 +5,103 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 04 Mar 2017 17:20:47 +0800</pubDate>
-    <lastBuildDate>Sat, 04 Mar 2017 17:20:47 +0800</lastBuildDate>
+    <pubDate>Sun, 05 Mar 2017 18:23:00 +0800</pubDate>
+    <lastBuildDate>Sun, 05 Mar 2017 18:23:00 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>JS常用排序算法总结</title>
+        <description>&lt;p&gt;1、插入排序&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;思想：构建有序数列，对于未排序的数据，在已排序的数据中从后向前找到合适的位置插入直到未排序的数据个数为0（时间复杂度为n^2）；（注意：在已排序的中找到合适的位置可以采用二分查找提高效率，这样最后的时间复杂度为nlogn）。
+
+代码：
+    function insertSort(array){
+        var i,j,temp,low,mid,high,result,len = array.length;
+        if(len &amp;lt;= 1) return array;
+        result = array.slice(0);
+        for(i = 1;i &amp;lt; len;i++){
+            temp = result[i];
+            low = 0;
+            high = i - 1;
+            while(low &amp;lt;= high){
+                mid = parseInt((low+high)/2, 10);
+                if(temp &amp;lt; result[mid]) high = mid - 1;
+                else low = mid + 1;
+            }
+            for(j = i - 1;j &amp;gt;= high + 1;j--){
+                result[j+1] = result[j];
+            }
+            result[j+1] = temp;
+        }
+        return result;
+    }
+    insertSort([1,3,55,4,77]);  //[1, 3, 4, 55, 77]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2、冒泡排序&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;思想：相邻两元素进行比较，若前一个元素大于后一个元素，则交换顺序，这一轮会找出最大或者最小的元素；然后在剩下的元素重复上述操作直至所有元素都已排序完成。（优化思路：当一次遍历前后数组不产生变化时，说明该数组已经有序，结束排序）
+
+代码：
+    function bubbleSort(array){
+        var len = array.length,i,j,temp,exchange,result;
+        result = array.slice(0);
+        for(i = 0; i &amp;lt; len; i++){
+            exchange = 0;
+            for(j = len - 1;j &amp;gt; i; j--){
+                if(result[j] &amp;lt; result[j-1]){
+                    temp = result[j];
+                    result[j] = result[j-1];
+                    result[j-1] = temp;
+                    exchange = 1;
+                }
+            }
+        if (!exchange) return result;
+        }
+        return result;
+    }
+    bubbleSort([44,1,3,6,2,55]); //[1, 2, 3, 6, 44, 55]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2、快速排序&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;思想：首先选择一个元素（一般为中间元素）作为基准，然后比这个元素大的全部放在右边，比它小的全部放在左边；然后，在左边和右边分别重复上诉操作（时间复杂度为nlogn）。
+
+代码：
+    function quickSort(array){
+        sort = function(array){
+            var len = array.length;
+            if(len &amp;lt;= 1) return array;
+            var pivotIndex = Math.floor(array.length / 2);
+            var pivot = array.splice(pivotIndex, 1)[0];
+            var left = [], right = [];
+            for(var i = 0; i &amp;lt; len; i++){
+                if(array[i] &amp;lt; pivot){
+                    left.push(array[i]);
+                }else{
+                    right.push(array[i]);
+                }
+            }
+            return sort(left).concat([pivot], sort(right));
+        }
+        var result = sort(array);
+        return result;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Sun, 05 Mar 2017 00:00:00 +0800</pubDate>
+        <link>https://dandanzhou.github.io/2017/03/05/JavaScript-Algorithms/</link>
+        <guid isPermaLink="true">https://dandanzhou.github.io/2017/03/05/JavaScript-Algorithms/</guid>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
     
       <item>
         <title>面试不会问题总结</title>
@@ -473,71 +567,6 @@ Final Task
         <pubDate>Thu, 10 Mar 2016 05:12:00 +0800</pubDate>
         <link>https://dandanzhou.github.io/2016/03/10/promise/</link>
         <guid isPermaLink="true">https://dandanzhou.github.io/2016/03/10/promise/</guid>
-        
-        <category>JavaScript</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>url从浏览器输入到页面呈现</title>
-        <description>&lt;h2 id=&quot;url&quot;&gt;url从浏览器输入到页面呈现&lt;/h2&gt;
-&lt;p&gt;前段时间有人问我“从输入URL到页面加载完成的过程中都发生了什么”，当时脑袋里的碎片零零散散，就是不知道怎样完整的回答，今天刚好有时间把它给好好整理整理。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;主要的流程&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DNS解析--&amp;gt;建立连接，发送数据包 --&amp;gt;服务器响应请求，返回给浏览器--&amp;gt;浏览器渲染程序页面。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;DNS解析
-首先在浏览器输入了一个URL地址，但URL中服务器地址是一个域名而不是一个指定的IP地址，路由器并不知道你想要查找的地址，那么DNS域名解析系统会将该域名解析成ip，而IP地址是唯一的， 每一个ip地址对应网络上的一台计算机。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;建立网络连接，发送数据包
-由于以上的努力，已经能够根据ip和端口号与网络上对应的服务器建立连接，浏览器这边会向服务器发送一个数据包，里面包含了大量的信息，但这个数据包有一定的格式。就像我给你邮个快递，也得遵循邮递公司的一些规则吧！我得写上我的身份信息、寄的物品、标明邮递地址….道理是一样的，到了网络中这些规则就是“Http协议(网络协议)”
-http协议是客户端和服务器端两者通信共同遵循的一些规则。主要内容是定义了客户端如何向服务器请求资源，服务器如何响应客户端请求。&lt;/p&gt;
-
-    &lt;p&gt;请求中的POST与 GET方法有什么区别？
-  1.根据HTTP规范，GET用于信息获取，而且应该是安全的,这里的安全是指非修改的信息，就像在数据库执行查询一样，不会修改数据，也不会增加删减数据，不会影响资源的状态，而post可能会改变数据的原始状态。
-  2.GET提交的数据最多只有1024字节，理论上POST是没有限制的。
-  3.从请求的URL中可以找到一个区别：GET请求的数据会附在URL之后，在浏览器URL栏就能看的。似乎POST比GET更可靠一些，因为它请求把提交的数据放在包体中，地址栏上不可见。（也有的解释说两者都没有长度限制，根本的区别就是一个是获取数据，一个修改数据！）&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;服务器响应请求，返回给浏览器
-服务器会分解你的数据包，例如你查找的是一个文档，那么服务器可能会返回一个doc文档或者zip压缩资源给你；如果你访问的是一个链接页面，那么服务器相应的返回一个包含HTML/CSS标记文档，这些请求和响应都有一个通用的写法，这些规则也就是前面提到的”http协议”。
-客户端向服务器请求资源时，除了告诉服务器要请求的资源，同时还会附带一些其他的信息，这部分信息放在”header”部分（服务器响应请求也一样！），主要有请求头(略)和响应头&lt;/p&gt;
-
-    &lt;p&gt;200	OK	一切正常，对GET和POST请求的应答文档跟在后面。
-  201	Created	服务器已经创建了文档，Location头给出了它的URL。
-  202	Accepted	已经接受请求，但处理尚未完成。&lt;/p&gt;
-
-    &lt;p&gt;300	Multiple Choices	客户请求的文档可以在多个位置找到，这些位置已经在返回的文档内列出。如果服务器要提出优先选择，则应该在Location应答头指明。
-  301	Moved Permanently	永久重定向。
-  302	Found	临时重定向
-  304	Not Modified	客户端有缓冲的文档并发出了一个条件性的请求。服务器告 诉客户，原来缓冲的文档还可以继续使用。&lt;/p&gt;
-
-    &lt;p&gt;400	Bad Request	请求出现语法错误。
-  403	Forbidden	资源不可用。服务器理解客户的请求，但拒绝处理它。通常由于服务器上文件或目录的权限设置导致。
-  404	Not Found	无法找到指定位置的资源。这也是一个常用的应答。
-  405	Method Not Allowed	请求方法（GET、POST、HEAD、DELETE、PUT、TRACE等）对指定的资源不适用。（HTTP 1.1新）&lt;/p&gt;
-
-    &lt;p&gt;500	Internal Server Error	服务器遇到了意料不到的情况，不能完成客户的请求。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;客户端渲染 
- 渲染引擎得到html字符串作为输入，然后对html进行转换，转化成能够被DOM处理的形式，接着转换成一个dom树，在解析html的过程，解析到link、script、img等一些请求标签时，会发送请求把对应的内容获取到。这时又会同步进行css的解析，构建出css样式规则应用到dom树上，然后进行一定的布局处理，比如标记节点块在浏览器中的坐标等形成最终的渲染树，最后根据这棵渲染树在浏览器窗口中进行绘制。
-View&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 09 Mar 2016 04:00:00 +0800</pubDate>
-        <link>https://dandanzhou.github.io/2016/03/09/url/</link>
-        <guid isPermaLink="true">https://dandanzhou.github.io/2016/03/09/url/</guid>
         
         <category>JavaScript</category>
         
