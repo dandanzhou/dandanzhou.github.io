@@ -5,15 +5,15 @@
     <description>前端开发工程师一枚！</description>
     <link>https://dandanzhou.github.io/</link>
     <atom:link href="https://dandanzhou.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 05 Mar 2017 18:23:00 +0800</pubDate>
-    <lastBuildDate>Sun, 05 Mar 2017 18:23:00 +0800</lastBuildDate>
+    <pubDate>Mon, 06 Mar 2017 08:59:02 +0800</pubDate>
+    <lastBuildDate>Mon, 06 Mar 2017 08:59:02 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>JS常用排序算法总结</title>
         <description>&lt;p&gt;1、插入排序&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;思想：构建有序数列，对于未排序的数据，在已排序的数据中从后向前找到合适的位置插入直到未排序的数据个数为0（时间复杂度为n^2）；（注意：在已排序的中找到合适的位置可以采用二分查找提高效率，这样最后的时间复杂度为nlogn）。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;思想：构建有序数列，对于未排序的数据，在已排序的数据中从后向前找到合适的位置插入直到未排序的数据个数为0（时间复杂度为n^2）；（注意：在已排序的中找到合适的位置可以采用二分查找提高效率，这样最后的时间复杂度为n^2）。
 
 代码：
     function insertSort(array){
@@ -42,7 +42,7 @@
 
 &lt;p&gt;2、冒泡排序&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;思想：相邻两元素进行比较，若前一个元素大于后一个元素，则交换顺序，这一轮会找出最大或者最小的元素；然后在剩下的元素重复上述操作直至所有元素都已排序完成。（优化思路：当一次遍历前后数组不产生变化时，说明该数组已经有序，结束排序）
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;思想：相邻两元素进行比较，若前一个元素大于后一个元素，则交换顺序，这一轮会找出最大或者最小的元素；然后在剩下的元素重复上述操作直至所有元素都已排序完成,时间复杂度为n^2。（优化思路：当一次遍历前后数组不产生变化时，说明该数组已经有序，结束排序）
 
 代码：
     function bubbleSort(array){
