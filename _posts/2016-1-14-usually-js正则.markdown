@@ -19,14 +19,19 @@ tags:
 
 > js获取URL中的参数
 
-    function GetQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = window.location.search.substr(1).match(reg); //获取url中"?"符后的字符串并正则匹配
-        var context = "";
-        if (r != null)
-        context = r[2];
-        reg = null;
-        r = null;
-        return context == null || context == "" || context == "undefined" ? "" : context;
+    function getKeyValue(url){
+        var result = {};
+        var sign = '';
+        if(url.indexOf('#') != -1){
+            sign = '#'
+        }else{
+            sign = '?'
+        }
+        var data = url.split(sign)[1].split('&');
+        for(var i = 0; i < data.length; i++){
+            result[data[i].split('=')[0]] = data[i].split('=')[1];
+        }
+        return result;
     }
-    alert(GetQueryString("q"));
+    getKeyValue(window.location.href);
+
