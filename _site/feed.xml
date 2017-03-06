@@ -5,9 +5,119 @@
     <description>前端开发工程师一枚！</description>
     <link>http://localhost:3000/</link>
     <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 06 Mar 2017 15:35:04 +0800</pubDate>
-    <lastBuildDate>Mon, 06 Mar 2017 15:35:04 +0800</lastBuildDate>
+    <pubDate>Mon, 06 Mar 2017 17:35:11 +0800</pubDate>
+    <lastBuildDate>Mon, 06 Mar 2017 17:35:11 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Fetch API</title>
+        <description>&lt;p&gt;自我从事前端，一直使用XMLHttpRequest(XHR)发送异步请求；直到最近了解到Fetch API，发现它完美基于事件的模型与最近流行的 Promise 和 generator 异步编程模型，然后果断替换掉ajax换这个实用的方法来获取网络资源。&lt;/p&gt;
+
+&lt;h4 id=&quot;section&quot;&gt;简单示例&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetch API中最常用的是fetch()方法，该方法最简单的形式是，接受一个URL参数并返回以一个promise对象
+fetch(&quot;/data.json&quot;).then(function(res) {
+    // res instanceof Response == true.
+    if (res.ok) {
+        res.json().then(function(data) {
+        console.log(data.entries);
+        });
+    } else {
+        console.log(&quot;Looks like the response wasn't perfect, got status&quot;, res.status);
+    }
+    }, function(e) {
+    console.log(&quot;Fetch failed!&quot;, e);
+});
+
+如果是提交一个POST请求，代码如下：
+fetch(&quot;http://www.example.org/submit.php&quot;, {
+    method: &quot;POST&quot;,
+    headers: {
+        &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;
+    },
+    body: &quot;firstName=Nikhil&amp;amp;favColor=blue&amp;amp;password=easytoguess&quot;
+    }).then(function(res) {
+    if (res.ok) {
+        alert(&quot;Perfect! Your settings are saved.&quot;);
+    } else if (res.status == 401) {
+        alert(&quot;Oops! You are not authorized.&quot;);
+    }
+    }, function(e) {
+    alert(&quot;Error submitting form!&quot;);
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;fetch3&quot;&gt;Fetch引入的3个接口&lt;/h4&gt;
+&lt;p&gt;1、Headers 它可以是键值对，也可以是一个多维数组或JS字面量对象；可以通过has来检索它是否有那个内容。&lt;/p&gt;
+
+&lt;p&gt;2、Request 通过构造一个 Request 对象来获取网络资源，构造函数需要 URL、method 和 headers 参数，同时也可以提供请求体（body）、请求模式（mode）、credentials 和 cache hints 等参数。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var uploadReq = new Request(&quot;/uploadImage&quot;, {
+    method: &quot;POST&quot;,
+    headers: {
+        &quot;Content-Type&quot;: &quot;image/png&quot;,
+    },
+    body: &quot;image data&quot;
+});
+mode 参数用来决定是否允许跨域请求，以及哪些 response 属性可读。可选的 mode 值为 &quot;same-origin&quot;（所有的请求遵守同源策略）、&quot;no-cors&quot;（默认，该模式允许来自 CDN 的脚本、其他域的图片和其他一些跨域资源，但是首先有个前提条件，就是请求的 method 只能是HEAD、GET 或 POST。此外，如果 ServiceWorkers 拦截了这些请求，它不能随意添加或者修改除这些之外 Header 属性。第三，JS 不能访问 Response 对象中的任何属性，这确保了跨域时 ServiceWorkers 的安全和隐私信息泄漏问题）以及 &quot;cors&quot;（用于跨域请求）。另外，credentials 属性决定了是否可以跨域访问 cookie 。该属性与 XHR 的withCredentials 标志相同，但是只有三个值，分别是 omit（默认）、same-origin 和 include。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;3、Response  fetch() 的回调中获得，有一个 type 属性，它的值可能是 “basic”、”cors”、”default”、”error” 或 “opaque”。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;流和克隆&lt;/h4&gt;
+&lt;p&gt;1、注意Request和Response的body只能被读取一次！它们有一个属性叫bodyUsed，读取一次之后设置为true，就不能再读取了。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var res = new Response(&quot;one time use&quot;);
+    console.log(res.bodyUsed); // false
+    res.text().then(function(v) {
+    console.log(res.bodyUsed); // true
+    });
+    console.log(res.bodyUsed); // true
+
+    res.text().catch(function(e) {
+    console.log(&quot;Tried to read already consumed Response&quot;);
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2、API提供了一个clone()方法。调用这个方法可以得到一个克隆对象。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;addEventListener('fetch', function(evt) {
+    var sheep = new Response(&quot;Dolly&quot;);
+    console.log(sheep.bodyUsed); // false
+    var clone = sheep.clone();
+    console.log(clone.bodyUsed); // false
+
+    clone.text();
+    console.log(sheep.bodyUsed); // false
+    console.log(clone.bodyUsed); // true
+
+    evt.respondWith(cache.add(sheep.clone()).then(function(e) {
+        return sheep;
+    });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;不过要记得，clone()必须要在读取之前调用，也就是先clone()再读取。&lt;/p&gt;
+
+&lt;h4 id=&quot;vue--vue-fetch&quot;&gt;vue + vue-fetch&lt;/h4&gt;
+&lt;p&gt;学习了fetch，立马拿到最近做demo中去应用。
+首先，npm install vue-fetch，然后相关代码如下：
+&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/fetch-1.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/fetch-2.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/fetch-3.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/fetch-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 06 Mar 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:3000/2017/03/06/Fetch-API/</link>
+        <guid isPermaLink="true">http://localhost:3000/2017/03/06/Fetch-API/</guid>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
     
       <item>
         <title>JS常用排序算法总结</title>
@@ -493,82 +603,6 @@ Now,我会给出我自己的理解：&lt;/p&gt;
         <guid isPermaLink="true">http://localhost:3000/2016/03/11/BFC/</guid>
         
         <category>CSS</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Promise初探</title>
-        <description>&lt;h2 id=&quot;promise&quot;&gt;Promise初探&lt;/h2&gt;
-&lt;p&gt;Promise是抽象异步处理对象以及对其进行各种操作的组件。&lt;/p&gt;
-
-&lt;p&gt;创建promise对象的流程如下所示。		
- 1、new Promise(fn) 返回一个promise对象&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var promise = new Promise(function(resolve, reject) {		
-            // 异步处理		
-            // 处理结束后、调用resolve 或 reject		
-    });		
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;2、在fn 中指定异步等处理&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;处理结果正常的话，调用resolve(处理结果值)		
-处理结果错误的话，调用reject(Error对象)		
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Promise.reject(error)是和 Promise.resolve(value) 类似的静态方法，是 new Promise() 方法的快捷方式。		
- 比如 Promise.resolve(42); 可以认为是以下代码的语法糖。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;new Promise(function(resolve){		
-  resolve(42);		
-});		
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;比如 Promise.reject(new Error(“出错了”)) 就是下面代码的语法糖形式。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;new Promise(function(resolve,reject){		
-   reject(new Error(&quot;出错了&quot;));		
-});		
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;promise可以写成方法链的形式&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function taskA() {		
-    console.log(&quot;Task A&quot;);		
-}		
-function taskB() {		
-    console.log(&quot;Task B&quot;);		
-}		
-function onRejected(error) {		
-     console.log(&quot;Catch Error: A or B&quot;, error);		
-}		
-function finalTask() {		
-     console.log(&quot;Final Task&quot;);		
-}		
-        
-var promise = Promise.resolve();		
-promise		
-   .then(taskA)		
-   .then(taskB)		
-   .catch(onRejected)		
-   .then(finalTask);		
-                
-运行结果：Task A		
-Task B		
-Final Task	
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Thu, 10 Mar 2016 05:12:00 +0800</pubDate>
-        <link>http://localhost:3000/2016/03/10/promise/</link>
-        <guid isPermaLink="true">http://localhost:3000/2016/03/10/promise/</guid>
-        
-        <category>JavaScript</category>
         
         
       </item>
