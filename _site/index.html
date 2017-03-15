@@ -115,6 +115,25 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2017/03/15/Vue%E6%8A%98%E8%85%BE%E7%82%B9/">
+        <h2 class="post-title">            Vue实践中的几个折腾点
+        </h2>
+        
+        <div class="post-content-preview">
+            组件间事件派发与接收
+在用vue实现外卖页面的时候，当点击+的时候小球下落一个，但+和小球分别在不同的组件中。这是就需要在两个组件间进行事件的通信。由于在vue2.0中$dispatch 和 $broadcast被弃用，需要采用新的方式如下：
+
+在初始化vue之前，给data添加一个 名字为eventhub 的空vue对象
+/* eslint-disable no-new */
+new Vu...
+        </div>
+    </a>
+    <p class="post-meta">Posted by Daisydan on March 15, 2017</p>
+        
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2017/03/06/Fetch-API/">
         <h2 class="post-title">            Fetch API
         </h2>
@@ -530,26 +549,6 @@ HTML部分
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2015/11/06/yidong-web/">
-        <h2 class="post-title">            移动web经验总结
-        </h2>
-        
-        <div class="post-content-preview">
-            移动web经验总结
-
-一、头部引用
-
-&lt;meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /&gt;&lt;!-- 禁止缩放 --&gt;
-
-&lt;meta http-equiv="Cache-Control" conten...
-        </div>
-    </a>
-    <p class="post-meta">Posted by Daisydan on November 6, 2015</p>
-        
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -578,7 +577,7 @@ HTML部分
                     <div class="tags">
         				
                             
-                				<a href="/tags/#Others" title="Others" rel="10">
+                				<a href="/tags/#Others" title="Others" rel="11">
                                     Others
                                 </a>
                             

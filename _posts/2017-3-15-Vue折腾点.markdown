@@ -1,0 +1,91 @@
+---
+layout:     post
+title:      Vue实践中的几个折腾点
+date:       2017-3-15
+tags:
+    - Others
+---	
+
+#### 组件间事件派发与接收
+在用vue实现外卖页面的时候，当点击+的时候小球下落一个，但+和小球分别在不同的组件中。这是就需要在两个组件间进行事件的通信。由于在vue2.0中$dispatch 和 $broadcast被弃用，需要采用新的方式如下：
+
+    在初始化vue之前，给data添加一个 名字为eventhub 的空vue对象
+    /* eslint-disable no-new */
+    new Vue({
+        el: '#app',
+        router,
+        polyfill: true,
+        template: '<App/>',
+        data: {
+            eventHub: new Vue()
+        },
+        components: {App}
+    });
+
+    某一个组件内调用事件触发：this.$root.eventHub.$emit('eventName', event.target);
+
+    另一个组件内调用事件接收, 在组件销毁时解除事件绑定,使用$off方法
+    created:{
+        this.$root.eventHub.$on('eventName',(target) => {
+            this.functionName(target)
+        });
+    },
+    method:{
+        functionName(target) {
+            console.log(target);
+        }
+    }
+    
+-----------
+
+#### Vue2.0 小球下落动画实现
+因为只有enter过程，所以使用vue钩子beforeEnter、enter、afterEnter
+
+     <transition name="drop" v-for="ball in balls" key="ball" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+          <div v-show="ball.show" class="ball">
+            <div class="inner inner-hook"></div>
+          </div>
+     </transition>
+
+      beforeEnter: function (el) {
+        let count = this.balls.length;
+        while (count--) {
+          let ball = this.balls[count];
+          if (ball.show) {
+            let rect = ball.el.getBoundingClientRect();
+            let x = rect.left - 32;
+            let y = -(window.innerHeight - rect.top - 22);
+            el.style.display = '';
+            el.style.webkitTransform = `translate3D(0,${y}px,0)`;
+            el.style.transform = `translate3D(0,${y}px,0)`;
+            let inner = el.getElementsByClassName('inner-hook')[0];
+            inner.style.webkitTransform = `translate3D(${x}px,0,0)`;
+            inner.style.transform = `translate3D(${x}px,0,0)`;
+          }
+        }
+      },
+      // 此回调函数是可选项的设置
+      // 与 CSS 结合时使用
+      enter: function (el, done) {
+        /* eslint-disable no-unused-vars */
+        let refresh = el.offsetHeight;
+        this.$nextTick(() => {
+          el.style.display = '';
+          el.style.webkitTransform = 'translate3D(0,0,0)';
+          el.style.transform = 'translate3D(0,0,0)';
+          let inner = el.getElementsByClassName('inner-hook')[0];
+          inner.style.webkitTransform = 'translate3D(0,0,0)';
+          inner.style.transform = 'translate3D(0,0,0)';
+        });
+        done();
+      },
+      afterEnter: function (el) {
+        let ball = this.balls[0];
+        ball.show = false;
+        el.style.display = 'none';
+      }
+    
+-----------
+
+#### 让项目在服务器后台执行
+起初用的是nohub npm run dev &  但是在服务器上，该命令不生效；后来用screen npm run dev就完美解决了。

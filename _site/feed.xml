@@ -5,9 +5,108 @@
     <description>前端开发工程师一枚！</description>
     <link>http://localhost:3000/</link>
     <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 06 Mar 2017 17:45:56 +0800</pubDate>
-    <lastBuildDate>Mon, 06 Mar 2017 17:45:56 +0800</lastBuildDate>
+    <pubDate>Wed, 15 Mar 2017 13:26:58 +0800</pubDate>
+    <lastBuildDate>Wed, 15 Mar 2017 13:26:58 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Vue实践中的几个折腾点</title>
+        <description>&lt;h4 id=&quot;section&quot;&gt;组件间事件派发与接收&lt;/h4&gt;
+&lt;p&gt;在用vue实现外卖页面的时候，当点击+的时候小球下落一个，但+和小球分别在不同的组件中。这是就需要在两个组件间进行事件的通信。由于在vue2.0中$dispatch 和 $broadcast被弃用，需要采用新的方式如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;在初始化vue之前，给data添加一个 名字为eventhub 的空vue对象
+/* eslint-disable no-new */
+new Vue({
+    el: '#app',
+    router,
+    polyfill: true,
+    template: '&amp;lt;App/&amp;gt;',
+    data: {
+        eventHub: new Vue()
+    },
+    components: {App}
+});
+
+某一个组件内调用事件触发：this.$root.eventHub.$emit('eventName', event.target);
+
+另一个组件内调用事件接收, 在组件销毁时解除事件绑定,使用$off方法
+created:{
+    this.$root.eventHub.$on('eventName',(target) =&amp;gt; {
+        this.functionName(target)
+    });
+},
+method:{
+    functionName(target) {
+        console.log(target);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;vue20-&quot;&gt;Vue2.0 小球下落动画实现&lt;/h4&gt;
+&lt;p&gt;因为只有enter过程，所以使用vue钩子beforeEnter、enter、afterEnter&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &amp;lt;transition name=&quot;drop&quot; v-for=&quot;ball in balls&quot; key=&quot;ball&quot; @before-enter=&quot;beforeEnter&quot; @enter=&quot;enter&quot; @after-enter=&quot;afterEnter&quot;&amp;gt;
+      &amp;lt;div v-show=&quot;ball.show&quot; class=&quot;ball&quot;&amp;gt;
+        &amp;lt;div class=&quot;inner inner-hook&quot;&amp;gt;&amp;lt;/div&amp;gt;
+      &amp;lt;/div&amp;gt;
+ &amp;lt;/transition&amp;gt;
+
+  beforeEnter: function (el) {
+    let count = this.balls.length;
+    while (count--) {
+      let ball = this.balls[count];
+      if (ball.show) {
+        let rect = ball.el.getBoundingClientRect();
+        let x = rect.left - 32;
+        let y = -(window.innerHeight - rect.top - 22);
+        el.style.display = '';
+        el.style.webkitTransform = `translate3D(0,${y}px,0)`;
+        el.style.transform = `translate3D(0,${y}px,0)`;
+        let inner = el.getElementsByClassName('inner-hook')[0];
+        inner.style.webkitTransform = `translate3D(${x}px,0,0)`;
+        inner.style.transform = `translate3D(${x}px,0,0)`;
+      }
+    }
+  },
+  // 此回调函数是可选项的设置
+  // 与 CSS 结合时使用
+  enter: function (el, done) {
+    /* eslint-disable no-unused-vars */
+    let refresh = el.offsetHeight;
+    this.$nextTick(() =&amp;gt; {
+      el.style.display = '';
+      el.style.webkitTransform = 'translate3D(0,0,0)';
+      el.style.transform = 'translate3D(0,0,0)';
+      let inner = el.getElementsByClassName('inner-hook')[0];
+      inner.style.webkitTransform = 'translate3D(0,0,0)';
+      inner.style.transform = 'translate3D(0,0,0)';
+    });
+    done();
+  },
+  afterEnter: function (el) {
+    let ball = this.balls[0];
+    ball.show = false;
+    el.style.display = 'none';
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;让项目在服务器后台执行&lt;/h4&gt;
+&lt;p&gt;起初用的是nohub npm run dev &amp;amp;  但是在服务器上，该命令不生效；后来用screen npm run dev就完美解决了。&lt;/p&gt;
+</description>
+        <pubDate>Wed, 15 Mar 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:3000/2017/03/15/Vue%E6%8A%98%E8%85%BE%E7%82%B9/</link>
+        <guid isPermaLink="true">http://localhost:3000/2017/03/15/Vue%E6%8A%98%E8%85%BE%E7%82%B9/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
     
       <item>
         <title>Fetch API</title>
@@ -552,57 +651,6 @@ Now,我会给出我自己的理解：&lt;/p&gt;
         <guid isPermaLink="true">http://localhost:3000/2016/06/05/ajax-interception/</guid>
         
         <category>Others</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>神奇的BFC</title>
-        <description>&lt;h2 id=&quot;bfc&quot;&gt;神奇的BFC&lt;/h2&gt;
-&lt;p&gt;BFC，当别人向我提到这个词的时候，我脑袋里是一片空白，工作大半年了，连这个都不知道，甚是惭愧啊~~
-于是在网上查找相关资料整理如下：&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;BFC定义及规则&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;BFC(block formatting context),汉译为块级格式化上下文 
-* 内部box会在垂直方向一个接一个放置；
-* Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠；
-* 每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此；
-* BFC的区域不会与float box重叠；
-* BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此；
-* 计算BFC的高度时，浮动元素也参与计算。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;哪些元素会生成BFC&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* 根元素；
-* float属性不为none；
-* position为absolute或fixed；
-* display为inline-block, table-cell, table-caption, flex, inline-flex；
-* overflow不为visible。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;BFC的作用及原理&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* 自适应两栏布局（BFC的区域不会与float box重叠，我们可以通过通过触发main生成BFC， 来实现自适应两栏布局）
-* 清除内部浮动（计算BFC的高度时，浮动元素也参与计算）
-* 防止垂直margin重叠（Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。因此生成一个BFC。那么两块便不属于同一个BFC，就不会发生margin重叠了）
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Fri, 11 Mar 2016 01:04:00 +0800</pubDate>
-        <link>http://localhost:3000/2016/03/11/BFC/</link>
-        <guid isPermaLink="true">http://localhost:3000/2016/03/11/BFC/</guid>
-        
-        <category>CSS</category>
         
         
       </item>
