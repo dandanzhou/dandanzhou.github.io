@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Headers里必须详细了解的
-date:       2017-3-19
+date:       2017-3-18
 tags:
     - Others
 ---	
