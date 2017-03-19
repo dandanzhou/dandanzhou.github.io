@@ -6,7 +6,7 @@ tags:
     - Others
 ---	
 
-Http消息头目前大致分为请求头和响应头，具体详细内容可[点击查看](https://itbilu.com/other/relate/EJ3fKUwUx.html)，这里我就详细描述三点如下：
+Http消息头目前大致分为请求头和响应头，具体详细内容可[点击查看](https://itbilu.com/other/relate/EJ3fKUwUx.html)，这里我就详细描述两大点如下：
 
 一、浏览器缓存相关
 
