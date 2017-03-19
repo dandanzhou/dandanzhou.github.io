@@ -5,12 +5,12 @@
     <description>前端开发工程师一枚！</description>
     <link>http://localhost:3000/</link>
     <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 19 Mar 2017 16:34:29 +0800</pubDate>
-    <lastBuildDate>Sun, 19 Mar 2017 16:34:29 +0800</lastBuildDate>
+    <pubDate>Sun, 19 Mar 2017 16:35:32 +0800</pubDate>
+    <lastBuildDate>Sun, 19 Mar 2017 16:35:32 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
-        <title>Headers里必须详细了解的</title>
+        <title>Http Headers里必须详细了解的</title>
         <description>&lt;p&gt;Http消息头目前大致分为请求头和响应头，具体详细内容可&lt;a href=&quot;https://itbilu.com/other/relate/EJ3fKUwUx.html&quot;&gt;点击查看&lt;/a&gt;，这里我就详细描述三点如下：&lt;/p&gt;
 
 &lt;p&gt;一、浏览器缓存相关&lt;/p&gt;
