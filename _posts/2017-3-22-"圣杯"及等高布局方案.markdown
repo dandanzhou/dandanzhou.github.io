@@ -1,0 +1,136 @@
+---
+layout:     post
+title:      “圣杯”及等高布局的几种方案
+date:       2017-3-22
+tags:
+   - CSS
+---	
+
+不了解的人可能不知道“圣杯”及等高布局是个啥意思，嘿嘿，其实在昨天之前我也不知道这个名词，但你一定会知道它的内容（其实就是我们常见的三列布局，左右两边固定宽度，中间自适应并且这三列是等高的）。经本人亲证，总结了以下几种，话不多说，直接进入正题：
+
+#### 公共html部分：
+
+       <body>
+            <div class="main" id="main">
+                <div class="main-left" id="mainLeft"></div>
+                <div class="main-center" id="mainCenter">
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
+                </div>
+                <div class="main-right" id="mainCenter"></div>
+            </div>
+        </body>
+
+#### table布局
+
+###### css部分：
+
+        .main{
+            width: 100%;
+            display: table;
+        }
+        .main-left, .main-center, .main-right{
+            display: table-cell;
+        }
+        .main-left, .main-right{
+            background: #000;
+            width: 200px;
+        }
+        .main-center{
+            background: #eee;
+        }
+ 
+###### 结果如下：
+
+ ![](http://7xnl4q.com1.z0.glb.clouddn.com/2017-3-22-icon1.png)
+
+这样就实现“圣杯”及等高布局了。不过我们通常还有另外的需求：当我们文档内容高度小于浏览器视口高度时，依然想让它占满整个空间，这样就还需要通过额外的js操作如下：
+
+    if(document.body.clientHeight < window.innerHeight){
+        document.getElementById('main').style.height = window.innerHeight+'px';
+    }
+
+最后就是这样了：
+![](http://7xnl4q.com1.z0.glb.clouddn.com/2017-3-22-icon2.png)
+
+--------
+
+#### 定位实现
+
+###### css部分：
+
+    .main{
+        width: 100%;
+        position: relative;
+    }
+    .main-left, .main-right{
+        position: absolute;
+        top: 0;
+        width: 200px;
+        height: 100%;
+        background: #000;
+    }
+    .main-left{
+        left: 0;
+    }
+    .main-right{
+         right: 0;
+    }
+    .main-center{
+        width: calc(100% - 400px);
+        margin-left: 200px;
+        margin-right: 200px;
+        background: #eee;
+    }
+
+同样需要它占满整个空间需要：
+
+    if(document.body.clientHeight < window.innerHeight){
+        document.getElementById('mainCenter').style.height = window.innerHeight+'px';
+    }
+
+###### 结果显示和以上第二张图一样
+
+--------
+
+#### flex布局
+
+###### css部分：
+
+    .main{
+        width: 100%;
+        display: flex;
+    }
+    .main-left, .main-right{
+        flex: 0 0 200px;
+        width: 200px;
+        height: 100%;
+        background: #000;
+    }
+    .main-center{
+        flex: 1;
+        background: #eee;
+    }
+
+同样需要它占满整个空间需要：
+
+    if(document.body.clientHeight < window.innerHeight){
+        document.getElementById('main').style.height = window.innerHeight+'px';
+    }else{
+        document.getElementById('mainLeft').style.height = document.body.clientHeight+'px';
+        document.getElementById('mainRight').style.height = document.body.clientHeight+'px';
+    }
+
+###### 结果显示和以上第二张图一样
+
+--------
+
+但是考虑到兼容性和简易问题，table布局最优~~

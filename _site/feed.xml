@@ -5,9 +5,163 @@
     <description>前端开发工程师一枚！</description>
     <link>http://localhost:3000/</link>
     <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 19 Mar 2017 16:39:50 +0800</pubDate>
-    <lastBuildDate>Sun, 19 Mar 2017 16:39:50 +0800</lastBuildDate>
+    <pubDate>Wed, 22 Mar 2017 11:02:23 +0800</pubDate>
+    <lastBuildDate>Wed, 22 Mar 2017 11:02:23 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>“圣杯”及等高布局的几种方案</title>
+        <description>&lt;p&gt;不了解的人可能不知道“圣杯”及等高布局是个啥意思，嘿嘿，其实在昨天之前我也不知道这个名词，但你一定会知道它的内容（其实就是我们常见的三列布局，左右两边固定宽度，中间自适应并且这三列是等高的）。经本人亲证，总结了以下几种，话不多说，直接进入正题：&lt;/p&gt;
+
+&lt;h4 id=&quot;html&quot;&gt;公共html部分：&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &amp;lt;body&amp;gt;
+        &amp;lt;div class=&quot;main&quot; id=&quot;main&quot;&amp;gt;
+            &amp;lt;div class=&quot;main-left&quot; id=&quot;mainLeft&quot;&amp;gt;&amp;lt;/div&amp;gt;
+            &amp;lt;div class=&quot;main-center&quot; id=&quot;mainCenter&quot;&amp;gt;
+            &amp;lt;p&amp;gt;test&amp;lt;/p&amp;gt;
+            &amp;lt;p&amp;gt;test&amp;lt;/p&amp;gt;
+            &amp;lt;p&amp;gt;test&amp;lt;/p&amp;gt;
+            &amp;lt;p&amp;gt;test&amp;lt;/p&amp;gt;
+            &amp;lt;p&amp;gt;test&amp;lt;/p&amp;gt;
+            &amp;lt;p&amp;gt;test&amp;lt;/p&amp;gt;
+            &amp;lt;p&amp;gt;test&amp;lt;/p&amp;gt;
+            &amp;lt;p&amp;gt;test&amp;lt;/p&amp;gt;
+            &amp;lt;p&amp;gt;test&amp;lt;/p&amp;gt;
+            &amp;lt;p&amp;gt;test&amp;lt;/p&amp;gt;
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div class=&quot;main-right&quot; id=&quot;mainCenter&quot;&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;table&quot;&gt;table布局&lt;/h4&gt;
+
+&lt;h6 id=&quot;css&quot;&gt;css部分：&lt;/h6&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    .main{
+        width: 100%;
+        display: table;
+    }
+    .main-left, .main-center, .main-right{
+        display: table-cell;
+    }
+    .main-left, .main-right{
+        background: #000;
+        width: 200px;
+    }
+    .main-center{
+        background: #eee;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h6 id=&quot;section&quot;&gt;结果如下：&lt;/h6&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/2017-3-22-icon1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这样就实现“圣杯”及等高布局了。不过我们通常还有另外的需求：当我们文档内容高度小于浏览器视口高度时，依然想让它占满整个空间，这样就还需要通过额外的js操作如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(document.body.clientHeight &amp;lt; window.innerHeight){
+    document.getElementById('main').style.height = window.innerHeight+'px';
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;最后就是这样了：
+&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/2017-3-22-icon2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;定位实现&lt;/h4&gt;
+
+&lt;h6 id=&quot;css-1&quot;&gt;css部分：&lt;/h6&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.main{
+    width: 100%;
+    position: relative;
+}
+.main-left, .main-right{
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background: #000;
+}
+.main-left{
+    left: 0;
+}
+.main-right{
+     right: 0;
+}
+.main-center{
+    width: calc(100% - 400px);
+    margin-left: 200px;
+    margin-right: 200px;
+    background: #eee;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;同样需要它占满整个空间需要：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(document.body.clientHeight &amp;lt; window.innerHeight){
+    document.getElementById('mainCenter').style.height = window.innerHeight+'px';
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h6 id=&quot;section-2&quot;&gt;结果显示和以上第二张图一样&lt;/h6&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;flex&quot;&gt;flex布局&lt;/h4&gt;
+
+&lt;h6 id=&quot;css-2&quot;&gt;css部分：&lt;/h6&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.main{
+    width: 100%;
+    display: flex;
+}
+.main-left, .main-right{
+    flex: 0 0 200px;
+    width: 200px;
+    height: 100%;
+    background: #000;
+}
+.main-center{
+    flex: 1;
+    background: #eee;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;同样需要它占满整个空间需要：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(document.body.clientHeight &amp;lt; window.innerHeight){
+    document.getElementById('main').style.height = window.innerHeight+'px';
+}else{
+    document.getElementById('mainLeft').style.height = document.body.clientHeight+'px';
+    document.getElementById('mainRight').style.height = document.body.clientHeight+'px';
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h6 id=&quot;section-3&quot;&gt;结果显示和以上第二张图一样&lt;/h6&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;但是考虑到兼容性和简易问题，table布局最优~~&lt;/p&gt;
+</description>
+        <pubDate>Wed, 22 Mar 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:3000/2017/03/22/%E5%9C%A3%E6%9D%AF-%E5%8F%8A%E7%AD%89%E9%AB%98%E5%B8%83%E5%B1%80%E6%96%B9%E6%A1%88/</link>
+        <guid isPermaLink="true">http://localhost:3000/2017/03/22/%E5%9C%A3%E6%9D%AF-%E5%8F%8A%E7%AD%89%E9%AB%98%E5%B8%83%E5%B1%80%E6%96%B9%E6%A1%88/</guid>
+        
+        <category>CSS</category>
+        
+        
+      </item>
     
       <item>
         <title>Http Headers里必须详细了解的&gt;-&lt;</title>
@@ -630,47 +784,6 @@ Now,我会给出我自己的理解：&lt;/p&gt;
         <pubDate>Sat, 23 Jul 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:3000/2016/07/23/others/</link>
         <guid isPermaLink="true">http://localhost:3000/2016/07/23/others/</guid>
-        
-        <category>Others</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>web静态资源缓存自动更新</title>
-        <description>&lt;p&gt;核心：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;在每次发布之前，利用Gulp对所有的静态资源进行预处理，重命名为原文件名 + 文件MD5值 + 文件后缀名的形式。比如register.js重命名为register-87f3f22ee7.js
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;步骤：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1、先用npm下载gulp-clean  gulp-rev  gulp-rev-collector这几个依赖，其次配置好gulpfile.js里面的内容（已配置好），有兴趣可去项目根目录里面查看；
-2、如果第一步已经完成，如果你只是修改了www端得css或者ts，依次执行gulp www-clean( 取决于你gulpfile.js里面的配置) 、gulp ，然后在你配置的相关文件里面就会生成对应的rev-manifest.json（路径：public/assets/rev/css/和public/assets/rev/js/），如下图所示
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache1.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache1.png&quot; /&gt;
-&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache2.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache2.png&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;3、到这里对应css名称就会发生对应的变化
-但是js没有，为什么呢？？？？？？ 因为我们项目里面用的是require模块加载，在每个html里面都是require对应的js，而不是普通的&amp;lt;script src=&quot;&quot;&amp;gt;&amp;lt;/script&amp;gt;。
-在网上找了一些相关资料，有两种还凑合：
-(1)在require.congfig配置里面加上 urlArgs: &quot;bust=&quot; +  (new Date()).getTime()，但这只适合开发环境
-(2)在每次发布的时候需要根据rev-manifest在require.congfig对模块进行mapping，将配置文件以内联JS的形式写入到模版页面里面，类似于：
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache3.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/cache3.png&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;看起来有点麻烦哈，因为每次修改完js或者pull代码获得更新的js，rev-manifest.json里面对应的js名称后的一串字符会自动变化，但是require.congfig里面需要我们手动去改变，这需要我们细心啊啊啊啊啊！！！！
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Sat, 11 Jun 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:3000/2016/06/11/web-clear-cache/</link>
-        <guid isPermaLink="true">http://localhost:3000/2016/06/11/web-clear-cache/</guid>
         
         <category>Others</category>
         
