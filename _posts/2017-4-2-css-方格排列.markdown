@@ -51,7 +51,7 @@ but...它的宽度是不确定的，所以这个想法是行不通的。
 
      css部分：
      .main{
-        width: 103px;      //宽度为方块宽度的倍数
+        width: 103px;      //这里宽度不固定，宽度为方块宽度的倍数
         margin: 100px auto;
         background: #000;
         padding-top: 1px;
