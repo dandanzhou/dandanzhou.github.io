@@ -5,9 +5,90 @@
     <description>前端开发工程师一枚！</description>
     <link>http://localhost:3000/</link>
     <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 22 Mar 2017 11:02:23 +0800</pubDate>
-    <lastBuildDate>Wed, 22 Mar 2017 11:02:23 +0800</lastBuildDate>
+    <pubDate>Sun, 02 Apr 2017 19:24:07 +0800</pubDate>
+    <lastBuildDate>Sun, 02 Apr 2017 19:24:07 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>方格布局</title>
+        <description>&lt;p&gt;最近被问到一个很有趣的问题，怎样实现默认方格块依次排列从左到右，从上到下依次排列，鼠标滑过每个方格块时，边框变为红色，如下图所示：
+&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/2017-4-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当时看到这些方格块，脑海里面首先想到的就是table布局，当时的基本思路是先用table布局(table要设置合并边框模型border-collapse:collapse;)；然后在每个td标签里面使用使用span标签占满整个空间，hover的时候border变色。&lt;/p&gt;
+
+&lt;p&gt;but…它的宽度是不确定的，所以这个想法是行不通的。&lt;/p&gt;
+
+&lt;p&gt;后来通过google找到了一种解决方案，嘿嘿，我觉得这种方案太神奇了~~&lt;/p&gt;
+
+&lt;p&gt;直接上代码部分^-^&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;html部分：
+&amp;lt;div class=&quot;main clearfix&quot;&amp;gt;
+    &amp;lt;span&amp;gt;
+    &amp;lt;div class=&quot;item&quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;
+    &amp;lt;div class=&quot;item&quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;
+    &amp;lt;div class=&quot;item&quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;
+    &amp;lt;div class=&quot;item&quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;
+    &amp;lt;div class=&quot;item&quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;
+    &amp;lt;div class=&quot;item&quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;
+    &amp;lt;div class=&quot;item&quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;
+    &amp;lt;div class=&quot;item&quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/span&amp;gt;
+    &amp;lt;span&amp;gt;
+    &amp;lt;div class=&quot;item&quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;/span&amp;gt;
+ &amp;lt;/div&amp;gt;
+ 
+
+ css部分：
+ .main{
+    width: 103px;      //宽度为方块宽度的倍数
+    margin: 100px auto;
+    background: #000;
+    padding-top: 1px;
+    }
+.item{
+    width: 33px;
+    height: 33px;
+    line-height: 33px;
+    background: #eee;
+    margin-right: 1px;
+    margin-top: 1px; 
+    }
+span{
+    float: left;
+    width: 34px;
+    height: 34px;
+    padding-left: 1px;
+    padding-bottom: 1px;
+    margin-right: -1px;
+    margin-top: -1px;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 02 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:3000/2017/04/02/css-%E6%96%B9%E6%A0%BC%E6%8E%92%E5%88%97/</link>
+        <guid isPermaLink="true">http://localhost:3000/2017/04/02/css-%E6%96%B9%E6%A0%BC%E6%8E%92%E5%88%97/</guid>
+        
+        <category>CSS</category>
+        
+        
+      </item>
     
       <item>
         <title>“圣杯”及等高布局的几种方案</title>
@@ -762,28 +843,6 @@ Now,我会给出我自己的理解：&lt;/p&gt;
         <pubDate>Thu, 04 Aug 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:3000/2016/08/04/webpack/</link>
         <guid isPermaLink="true">http://localhost:3000/2016/08/04/webpack/</guid>
-        
-        <category>Others</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>随笔</title>
-        <description>&lt;h2 id=&quot;section&quot;&gt;想到啥就写啥了&lt;/h2&gt;
-
-&lt;p&gt;7月的尾巴渐渐逼近，不得不感叹时间之飞快，这个月貌似发生的事儿还是挺多的，不过总算是挺过来了。。。&lt;/p&gt;
-
-&lt;p&gt;新公司也没有之前那么忙了，该多花点功夫在新技术了，上个星期借的书，得快点看完了，感觉自己有时候开始有点懒，还是得慢慢改掉这个坏毛病。&lt;/p&gt;
-
-&lt;p&gt;偶然看到的几句话还是挺激励我的：放下懒惰 ––奋斗改变命运，绝招就是把一件平凡的小事做到炉火纯青，就是绝活。提醒自己，记住自己的提醒，上进的你，快乐的你，健康的你，善良的你，一定会有一个灿烂的人生。&lt;/p&gt;
-
-&lt;p&gt;减肥和学习是女人的终生事业啊，哈哈哈哈，已经减了两个星期，初见成效，但还没达到想要的效果，还得继续努力；学习吧，定是不能落下的，按照自己的脚步，慢慢来，总会有属于我的小幸运～～&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 23 Jul 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:3000/2016/07/23/others/</link>
-        <guid isPermaLink="true">http://localhost:3000/2016/07/23/others/</guid>
         
         <category>Others</category>
         

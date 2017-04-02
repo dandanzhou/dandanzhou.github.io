@@ -1,0 +1,75 @@
+---
+layout:     post
+title:      方格布局
+date:       2017-4-2
+tags:
+   - CSS
+---	
+
+最近被问到一个很有趣的问题，怎样实现默认方格块依次排列从左到右，从上到下依次排列，鼠标滑过每个方格块时，边框变为红色，如下图所示：
+![](http://7xnl4q.com1.z0.glb.clouddn.com/2017-4-2.png)
+
+当时看到这些方格块，脑海里面首先想到的就是table布局，当时的基本思路是先用table布局(table要设置合并边框模型border-collapse:collapse;)；然后在每个td标签里面使用使用span标签占满整个空间，hover的时候border变色。
+
+but...它的宽度是不确定的，所以这个想法是行不通的。
+
+后来通过google找到了一种解决方案，嘿嘿，我觉得这种方案太神奇了~~ 
+
+直接上代码部分^-^
+
+    html部分：
+    <div class="main clearfix">
+        <span>
+        <div class="item"></div>
+        </span>
+        <span>
+        <div class="item"></div>
+        </span>
+        <span>
+        <div class="item"></div>
+        </span>
+        <span>
+        <div class="item"></div>
+        </span>
+        <span>
+        <div class="item"></div>
+        </span>
+        <span>
+        <div class="item"></div>
+        </span>
+        <span>
+        <div class="item"></div>
+        </span>
+        <span>
+        <div class="item"></div>
+        </span>
+        <span>
+        <div class="item"></div>
+        </span>
+     </div>
+     
+
+     css部分：
+     .main{
+        width: 103px;      //宽度为方块宽度的倍数
+        margin: 100px auto;
+        background: #000;
+        padding-top: 1px;
+        }
+    .item{
+        width: 33px;
+        height: 33px;
+        line-height: 33px;
+        background: #eee;
+        margin-right: 1px;
+        margin-top: 1px; 
+        }
+    span{
+        float: left;
+        width: 34px;
+        height: 34px;
+        padding-left: 1px;
+        padding-bottom: 1px;
+        margin-right: -1px;
+        margin-top: -1px;
+        }
