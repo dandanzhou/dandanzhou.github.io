@@ -1,0 +1,50 @@
+---
+layout:     post
+title:      项目开发中兼容性总结
+date:       2017-4-20
+tags:
+   - CSS
+---	
+
+时间过得还是蛮快的，已经是入职新公司的第二周了，上篇博客写的时候还在各种面试阶段。
+
+最近两周一部分时间在做和兼容性相关的工作，对我来说也是一个经验，因为之前在兼容性方面也没专门花时间去仔细做过。下面我总结下最近遇到的一些兼容性方面的问题及答案：
+
+______
+
+q： 鼠标点击a、select、input、button等标签在火狐和IE中会出现虚线框<br>
+a： 
+    
+    /**** 清除ie的默认选择框样式清除，隐藏下拉箭头 ****/
+    select::-ms-expand { display: none; }
+
+    /**** 去掉Firefox下select选中时的虚线框 ****/
+    select:-moz-focusring,a:-moz-focusring {
+        border: none!important;
+        color: transparent!important;
+        text-shadow: 0 0 0 #000!important;
+    }
+    a,input,button{ outline:none!important;}
+
+    a{blr:expression(this.onFocus=this.close())!important;} /* 只支持IE，过多使用效率低 */
+
+    a{blr:expression(this.onFocus=this.blur())!important;} /* 只支持IE，过多使用效率低 */
+
+    a:focus { -moz-outline-style: none!important; } /* IE不支持 */
+
+    a:focus { outline: none!important; } /*很多网站都会加的属性*/
+
+
+______
+
+q： endswith方法在IE中不兼容，会报错<br>
+a： 
+
+    endswith(str)：用来检验一个字符串是否以str结尾；这里我们很容易想到用其他兼容性较好的方法来代替它，这里我用的是substr替代的。
+
+
+
+
+以上只是我最近几天遇到的，以后遇到其他兼容性相关的会继续补充^-^~~
+
+

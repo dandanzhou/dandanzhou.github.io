@@ -5,9 +5,62 @@
     <description>前端开发工程师一枚！</description>
     <link>http://localhost:3000/</link>
     <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 03 Apr 2017 12:07:36 +0800</pubDate>
-    <lastBuildDate>Mon, 03 Apr 2017 12:07:36 +0800</lastBuildDate>
+    <pubDate>Thu, 20 Apr 2017 09:25:54 +0800</pubDate>
+    <lastBuildDate>Thu, 20 Apr 2017 09:25:54 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>项目开发中兼容性总结</title>
+        <description>&lt;p&gt;时间过得还是蛮快的，已经是入职新公司的第二周了，上篇博客写的时候还在各种面试阶段。&lt;/p&gt;
+
+&lt;p&gt;最近两周一部分时间在做和兼容性相关的工作，对我来说也是一个经验，因为之前在兼容性方面也没专门花时间去仔细做过。下面我总结下最近遇到的一些兼容性方面的问题及答案：&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;q： 鼠标点击a、select、input、button等标签在火狐和IE中会出现虚线框&lt;br /&gt;
+a：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**** 清除ie的默认选择框样式清除，隐藏下拉箭头 ****/
+select::-ms-expand { display: none; }
+
+/**** 去掉Firefox下select选中时的虚线框 ****/
+select:-moz-focusring,a:-moz-focusring {
+    border: none!important;
+    color: transparent!important;
+    text-shadow: 0 0 0 #000!important;
+}
+a,input,button{ outline:none!important;}
+
+a{blr:expression(this.onFocus=this.close())!important;} /* 只支持IE，过多使用效率低 */
+
+a{blr:expression(this.onFocus=this.blur())!important;} /* 只支持IE，过多使用效率低 */
+
+a:focus { -moz-outline-style: none!important; } /* IE不支持 */
+
+a:focus { outline: none!important; } /*很多网站都会加的属性*/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;q： endswith方法在IE中不兼容，会报错&lt;br /&gt;
+a：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;endswith(str)：用来检验一个字符串是否以str结尾；这里我们很容易想到用其他兼容性较好的方法来代替它，这里我用的是substr替代的。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;以上只是我最近几天遇到的，以后遇到其他兼容性相关的会继续补充^-^~~&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 20 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:3000/2017/04/20/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E4%B8%AD%E5%85%BC%E5%AE%B9%E6%80%A7%E6%80%BB%E7%BB%93/</link>
+        <guid isPermaLink="true">http://localhost:3000/2017/04/20/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E4%B8%AD%E5%85%BC%E5%AE%B9%E6%80%A7%E6%80%BB%E7%BB%93/</guid>
+        
+        <category>CSS</category>
+        
+        
+      </item>
     
       <item>
         <title>方格布局</title>
@@ -809,40 +862,6 @@ Now,我会给出我自己的理解：&lt;/p&gt;
         <pubDate>Wed, 09 Nov 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:3000/2016/11/09/plan/</link>
         <guid isPermaLink="true">http://localhost:3000/2016/11/09/plan/</guid>
-        
-        <category>Others</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>webpack打包工具</title>
-        <description>&lt;p&gt;最近在webpack上折腾了几天，终于有了眉目，差点就要放弃了，折腾的过程中最大的收获就是：掌握了学习新东西的方法～～&lt;/p&gt;
-
-&lt;h2 id=&quot;webpack&quot;&gt;折腾的第一点:下载webpack&lt;/h2&gt;
-&lt;p&gt;最开始全局下载webpack,也就是npm install -g webpack比较顺利，但是后来在根目录下npm install webpack，一直报错如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/webpack1.jpg&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/webpack1.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;最关键的是我在别人电脑上一安装就成了－－
-在网上查了各种解决方案，但最终都木有解决问题，后来突然想到了之前装gulp的时候，每次装到gulp-sass时会出现问题（后来直接把以前好的gulp－sass复制了过来）；
-于是我决定把根目录下的node_modules全删了，重新安装，当安装到gulp－sass,同样出现了问题，在网上找到了一个解决方案，直接执行：npm install rebulid,终于成功安装了gulp;
-接着在根目录下安装webpack时，成功了！！！&lt;/p&gt;
-
-&lt;h2 id=&quot;webpack-1&quot;&gt;折腾的第二点：webpack的配置文件及运行&lt;/h2&gt;
-
-&lt;p&gt;为了实际演示，我在目前的项目中，用webpack打包了ts文件如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/webpack2.png&quot; alt=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/webpack2.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在做好配置后，运行webpack,也出现了问题，原因是在根目录下没有下载ts-loader,后来才知道，每一种模块对应的loader都应该先下载（只要配置中有就要下载）&lt;/p&gt;
-
-&lt;p&gt;目前，只是webpack有了一个大概的了解和大概的实际操作，还需我继续去探索～～&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 04 Aug 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:3000/2016/08/04/webpack/</link>
-        <guid isPermaLink="true">http://localhost:3000/2016/08/04/webpack/</guid>
         
         <category>Others</category>
         
