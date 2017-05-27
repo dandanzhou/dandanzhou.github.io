@@ -5,9 +5,51 @@
     <description>前端开发工程师一枚！</description>
     <link>http://localhost:3000/</link>
     <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 20 Apr 2017 09:25:54 +0800</pubDate>
-    <lastBuildDate>Thu, 20 Apr 2017 09:25:54 +0800</lastBuildDate>
+    <pubDate>Sat, 27 May 2017 09:50:27 +0800</pubDate>
+    <lastBuildDate>Sat, 27 May 2017 09:50:27 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>一场MYSQL引发的血泪史</title>
+        <description>&lt;p&gt;忍不住开头想来一句“我靠!!!!!!”；&lt;br /&gt;
+额，不要介意哈，下面我们进入正题，嘿嘿~~&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;场景：启动后台的user-service时，启动异常；&lt;/p&gt;
+
+&lt;p&gt;解决过程：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1、排查端口号有没有被占用，结果没有被占用，所以排除
+2、排查本地mysql是否正常启动，结果能进去，所以排除
+3、排查代码原因，其他同事能正常启动，所以又重新到gitlab上clone了一份代码，结果报同样的问题，所以排除
+4、关机重启，依旧.....
+5、尝试连接同事的数据库，连接成功后启动，结果正常了！！！！！
+6、卸载mysql重新安装，之前都是用方便的brew装，装成功后，依旧有问题...继续卸载，然后直接到官网上下了个最新的mysql安装，安装成功后，成功启动！！！！！
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;整个过程花了我足足一天时间，心里当时是一万个草泥马，但是现在回想起来，我也学到了不少知识。有血泪史，才有进步，哈哈哈哈哈&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;首先，熟悉了mysql常用命令及操作；
+其次，发现了两个问题：
+    第一个是MySQL 5.7更改密码的命令相对以前有所变化，现在是 UPDATE user SET authentication_string=PASSWORD(&quot;NEWPASSWORD&quot;) WHERE User='root';以前的password被authentication_string替代了。
+    第二个是出现ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)的解决方案：先停掉mysql，接着在有mysqld_safe的目录下执行sudo ./mysqld_safe --skip-grant-tables，然后进入/usr/local/mysql/bin下执行./mysql就会成功进入。
+最后，锻炼我耐心的同时，我也真正学会看相关的错误日志了。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Sat, 27 May 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:3000/2017/05/27/%E4%B8%80%E5%9C%BAMYSQL%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%B3%AA%E5%8F%B2/</link>
+        <guid isPermaLink="true">http://localhost:3000/2017/05/27/%E4%B8%80%E5%9C%BAMYSQL%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%B3%AA%E5%8F%B2/</guid>
+        
+        <category>Others</category>
+        
+        
+      </item>
     
       <item>
         <title>项目开发中兼容性总结</title>
@@ -824,44 +866,6 @@ Now,我会给出我自己的理解：&lt;/p&gt;
         <pubDate>Tue, 29 Nov 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:3000/2016/11/29/http-reading/</link>
         <guid isPermaLink="true">http://localhost:3000/2016/11/29/http-reading/</guid>
-        
-        <category>Others</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>总结及计划</title>
-        <description>&lt;p&gt;打开博客，突然发现自己已经好久没有写博客了，再忙也得抽时间写写博客。&lt;/p&gt;
-
-&lt;p&gt;来到新公司将近半年了，感觉收获的不少也不是很多，大部分还是自己很少总结。今天刚好有时间，总结一下顺便计划下年底前要完成的任务。&lt;/p&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;总结&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1、了解到了typeSript；
-
-    *TypeScript增加了可选类型、类和模块
-    *TypeSript可编译成可读的、标准的JavaScript（ts编译成js）
-    *TypeScript扩展了JavaScript语法，已有的JavaScript代码可直接与现有的TypeScript一起运行
-    *Arrow函数（类似于c#的Lambda函数）
-
-2、熟悉了服务器上一些基本的linux命令；
-
-3、前端一些细小的知识点得到了理解。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;11月底要完成的事&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1、W3C/HTTP规范、HTTP协议、Web安全；
-2、继续把python看完并做出一个demo；
-3、熟练编写常用的数据结构和算法；
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Wed, 09 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:3000/2016/11/09/plan/</link>
-        <guid isPermaLink="true">http://localhost:3000/2016/11/09/plan/</guid>
         
         <category>Others</category>
         
