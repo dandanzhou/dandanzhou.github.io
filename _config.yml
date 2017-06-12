@@ -32,19 +32,13 @@ sidebar-featured-tags: true
 sidebar-about-description: "靠自己才是王道！"
 sidebar-avatar: "http://7xnl4q.com1.z0.glb.clouddn.com/avatar-zdd.jpeg"     # use absolute URL.
 
-# Friends
-friends: [
-    {
-        title: veryyoung,
-        href: "http://veryyoung.me"
-    },{
-        title: HuanHuan,
-        href: "http://minishine.github.io"
-    },{
-        title: COCO,
-        href: "http://stayhungry.me"
-    }
-]
+# # Friends
+# friends: [
+#    {
+#         title: COCO,
+#         href: "http://stayhungry.me"
+#     }
+# ]
 
 
 gems: [jekyll-paginate]
