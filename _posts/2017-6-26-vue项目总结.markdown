@@ -1,0 +1,75 @@
+---
+layout:     post
+title:      vue项目总结
+date:       2017-6-26
+tags:
+   - Vue
+---	
+
+一、既然是组件化开发，避免不了组件间的通信，以下列出各组件的通信
+
+    1、父组件通过props属性传递数据给子组件（注意：HTML 特性是不区分大小写的。所以，当使用的不是字符串模版，camelCased (驼峰式) 命名的 prop 需要转换为相对应的 kebab-case (短横线隔开式) 命名）
+
+    2、父子组件的通信（触发事件使用驼峰格式的自定义事件名称，在父组件中就可以使用on-evnet-name的形式来监听。）
+    子组件:
+        <template> <div @click="up"></div></template>
+        methods: { up() { this.$emit('resultChange','hehe'); //主动触发resultChange方法，'hehe'为向父组件传递的数据 }}
+    父组件:
+        <div> <child @on-result-change="mychangHandle" :msg="msg"></child> //监听子组件触发的upup事件,然后调用change方法</div>methods: { mychangHandle(msg) { this.msg = msg; }}
+
+    3、通过eventHub在任意组件间通信，eventHub就是创建一个事件中心（在全局声明，如let Hub = new Vue(); ），相当于中转站，可以用它来传递事件和接收事件.使用一个空的 Vue 实例作为中央事件总线
+
+    4、父组件通过$refs访问子组件属性
+
+二、用fetch代替ajax
+
+    由于IE中没有fetch，自然要为IE单独写个方法来兼容IE。于是有了下面：
+    return new Promise((resolve, reject) => {
+      let requestObj
+      if (window.XMLHttpRequest) { // Mozilla, Safari...
+        requestObj = new XMLHttpRequest()
+      } else if (window.ActiveXObject) { // IE
+        try {
+          requestObj = new ActiveXObject('Msxml2.XMLHTTP')
+        } catch (e) {
+          try {
+            requestObj = new ActiveXObject('Microsoft.XMLHTTP')
+          } catch (e) {
+          }
+        }
+      }
+
+      let sendData = ''
+      if (type === 'POST') {
+        sendData = JSON.stringify(data)
+      }
+
+      if (url !== '') {
+        requestObj.open(type, url, true)
+        requestObj.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+        requestObj.onreadystatechange = () => {
+          if (requestObj.readyState === 4) {
+            if (requestObj.status === 200) {
+              let obj
+              if (isIE(9)) {
+                obj = requestObj.responseText
+              } else {
+                obj = requestObj.response
+              }
+              if (typeof obj !== 'object') {
+                obj = JSON.parse(obj)
+              }
+              resolve(obj)
+            } else {
+              reject(requestObj)
+            }
+          }
+        }
+        requestObj.send(sendData)
+      }
+    })
+
+    如果你够细心的话，你会发现我单独处理了IE9的情况。对，我就在这里踩了个坑，IE9 new ActiveXObject没有response，只有responseText
+
+
+    

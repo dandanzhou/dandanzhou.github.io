@@ -115,6 +115,24 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2017/06/26/vue%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/">
+        <h2 class="post-title">            vue项目总结
+        </h2>
+        
+        <div class="post-content-preview">
+            一、既然是组件化开发，避免不了组件间的通信，以下列出各组件的通信
+
+1、父组件通过props属性传递数据给子组件（注意：HTML 特性是不区分大小写的。所以，当使用的不是字符串模版，camelCased (驼峰式) 命名的 prop 需要转换为相对应的 kebab-case (短横线隔开式) 命名）
+
+2、父子组件的通信（触发事件使用驼峰格式的自定义事件名称，在父组件中就可以使用on-evn...
+        </div>
+    </a>
+    <p class="post-meta">Posted by Daisydan on June 26, 2017</p>
+        
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2017/05/27/%E4%B8%80%E5%9C%BAMYSQL%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%B3%AA%E5%8F%B2/">
         <h2 class="post-title">            一场MYSQL引发的血泪史
         </h2>
@@ -528,31 +546,6 @@ console.log(str.replace(/(.)(\1)+/g,function($1,$2,$3){
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2016/01/12/zhengze/">
-        <h2 class="post-title">            JS正则表达式总结
-        </h2>
-        
-        <div class="post-content-preview">
-            JS正则表达式总结
-正则表达式通常用于两种任务：1.验证，2.搜索/替换。
-
-*字符类匹配
-
-[...]	方括号内的任意字符
-[^...]	不在方括号内的任意字符
-.	除了换行符和其他Unicode行终止符之外的任意字符
-\w	任何ASCII字符组成的单词，等价于[a-zA-Z0-9]
-\W	任何不是ASCII字符组成的单词，等价于[^a-zA-Z0-9]
-\s	任何Unicode空白符
-\...
-        </div>
-    </a>
-    <p class="post-meta">Posted by Daisydan on January 12, 2016</p>
-        
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -581,7 +574,7 @@ console.log(str.replace(/(.)(\1)+/g,function($1,$2,$3){
                     <div class="tags">
         				
                             
-                				<a href="/tags/#Others" title="Others" rel="13">
+                				<a href="/tags/#Others" title="Others" rel="11">
                                     Others
                                 </a>
                             
@@ -604,6 +597,14 @@ console.log(str.replace(/(.)(\1)+/g,function($1,$2,$3){
                                 </a>
                             
         				
+                            
+                				<a href="/tags/#Vue" title="Vue" rel="2">
+                                    Vue
+                                </a>
+                            
+        				
+                            
+        				
         			</div>
                 </section>
                 <!-- Short About -->
@@ -614,7 +615,7 @@ console.log(str.replace(/(.)(\1)+/g,function($1,$2,$3){
                             <img src="http://7xnl4q.com1.z0.glb.clouddn.com/avatar-zdd.jpeg" />
                         
                         
-                            <p>靠自己才是王道！</p>
+                            <p>只要你努力，梦想触手可及</p>
                         
                         <!-- SNS Link -->
                         <ul class="list-inline">

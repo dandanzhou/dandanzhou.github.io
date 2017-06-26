@@ -5,9 +5,90 @@
     <description>前端开发工程师一枚！</description>
     <link>http://localhost:3000/</link>
     <atom:link href="http://localhost:3000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 12 Jun 2017 09:22:53 +0800</pubDate>
-    <lastBuildDate>Mon, 12 Jun 2017 09:22:53 +0800</lastBuildDate>
+    <pubDate>Mon, 26 Jun 2017 16:09:49 +0800</pubDate>
+    <lastBuildDate>Mon, 26 Jun 2017 16:09:49 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>vue项目总结</title>
+        <description>&lt;p&gt;一、既然是组件化开发，避免不了组件间的通信，以下列出各组件的通信&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1、父组件通过props属性传递数据给子组件（注意：HTML 特性是不区分大小写的。所以，当使用的不是字符串模版，camelCased (驼峰式) 命名的 prop 需要转换为相对应的 kebab-case (短横线隔开式) 命名）
+
+2、父子组件的通信（触发事件使用驼峰格式的自定义事件名称，在父组件中就可以使用on-evnet-name的形式来监听。）
+子组件:
+    &amp;lt;template&amp;gt; &amp;lt;div @click=&quot;up&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/template&amp;gt;
+    methods: { up() { this.$emit('resultChange','hehe'); //主动触发resultChange方法，'hehe'为向父组件传递的数据 }}
+父组件:
+    &amp;lt;div&amp;gt; &amp;lt;child @on-result-change=&quot;mychangHandle&quot; :msg=&quot;msg&quot;&amp;gt;&amp;lt;/child&amp;gt; //监听子组件触发的upup事件,然后调用change方法&amp;lt;/div&amp;gt;methods: { mychangHandle(msg) { this.msg = msg; }}
+
+3、通过eventHub在任意组件间通信，eventHub就是创建一个事件中心（在全局声明，如let Hub = new Vue(); ），相当于中转站，可以用它来传递事件和接收事件.使用一个空的 Vue 实例作为中央事件总线
+
+4、父组件通过$refs访问子组件属性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;二、用fetch代替ajax&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;由于IE中没有fetch，自然要为IE单独写个方法来兼容IE。于是有了下面：
+return new Promise((resolve, reject) =&amp;gt; {
+  let requestObj
+  if (window.XMLHttpRequest) { // Mozilla, Safari...
+    requestObj = new XMLHttpRequest()
+  } else if (window.ActiveXObject) { // IE
+    try {
+      requestObj = new ActiveXObject('Msxml2.XMLHTTP')
+    } catch (e) {
+      try {
+        requestObj = new ActiveXObject('Microsoft.XMLHTTP')
+      } catch (e) {
+      }
+    }
+  }
+
+  let sendData = ''
+  if (type === 'POST') {
+    sendData = JSON.stringify(data)
+  }
+
+  if (url !== '') {
+    requestObj.open(type, url, true)
+    requestObj.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+    requestObj.onreadystatechange = () =&amp;gt; {
+      if (requestObj.readyState === 4) {
+        if (requestObj.status === 200) {
+          let obj
+          if (isIE(9)) {
+            obj = requestObj.responseText
+          } else {
+            obj = requestObj.response
+          }
+          if (typeof obj !== 'object') {
+            obj = JSON.parse(obj)
+          }
+          resolve(obj)
+        } else {
+          reject(requestObj)
+        }
+      }
+    }
+    requestObj.send(sendData)
+  }
+})
+
+如果你够细心的话，你会发现我单独处理了IE9的情况。对，我就在这里踩了个坑，IE9 new ActiveXObject没有response，只有responseText
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 26 Jun 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:3000/2017/06/26/vue%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</link>
+        <guid isPermaLink="true">http://localhost:3000/2017/06/26/vue%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</guid>
+        
+        <category>Vue</category>
+        
+        
+      </item>
     
       <item>
         <title>一场MYSQL引发的血泪史</title>
@@ -46,7 +127,7 @@
         <link>http://localhost:3000/2017/05/27/%E4%B8%80%E5%9C%BAMYSQL%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%B3%AA%E5%8F%B2/</link>
         <guid isPermaLink="true">http://localhost:3000/2017/05/27/%E4%B8%80%E5%9C%BAMYSQL%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%B3%AA%E5%8F%B2/</guid>
         
-        <category>Others</category>
+        <category>Mysql</category>
         
         
       </item>
@@ -490,7 +571,7 @@ method:{
         <link>http://localhost:3000/2017/03/15/Vue%E6%8A%98%E8%85%BE%E7%82%B9/</link>
         <guid isPermaLink="true">http://localhost:3000/2017/03/15/Vue%E6%8A%98%E8%85%BE%E7%82%B9/</guid>
         
-        <category>Others</category>
+        <category>Vue</category>
         
         
       </item>
@@ -834,38 +915,6 @@ location.hash则可以用来获取或设置页面的标签值。比如http://dom
         <pubDate>Sat, 04 Mar 2017 00:00:00 +0800</pubDate>
         <link>http://localhost:3000/2017/03/04/%E9%9D%A2%E8%AF%95%E4%B8%AD%E4%B8%8D%E4%BC%9A%E7%9A%84%E9%97%AE%E9%A2%98/</link>
         <guid isPermaLink="true">http://localhost:3000/2017/03/04/%E9%9D%A2%E8%AF%95%E4%B8%AD%E4%B8%8D%E4%BC%9A%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
-        
-        <category>Others</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>《http图解》读后感</title>
-        <description>&lt;p&gt;读了《http图解》想到了去年面试的时候，面试官问过我一个问题：url输入浏览器到页面呈现给我们，中间发生了什么？当时听到这个问题的时候脑子里空空如也~~如今回想起来，如果面试官如果再次问起，我会怎样回答呢？
-Now,我会给出我自己的理解：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1、url输入到浏览器，负责域名解析的DNS服务会通过域名查找对应的IP地址（也就是获得url对应的ip地址）；
-2、利用TCP/IP协议族进行网络通信，发送数据包，建立网络连接。客户端（浏览器）会向服务器端发送请求，服务端会响应客户端的请求。
-其中，客户端（浏览器）向服务器端发送请求，发送端会经历应用层（http报文）-&amp;gt;传输层（增加TCP首部）-&amp;gt;网络层（IP数据包，增加IP首部）-&amp;gt;数据链路层（增加以太网首部）；服务端则相反。
-3、客户端渲染，渲染引擎对html进行转换，转化成能够被DOM处理的形式，接着转换成一个dom树，在解析html的过程，会发送请求把对应的内容获取到，同时进行css的解析，构建出css样式规则应用到dom树上，然后进行一定的布局处理，最后根据这棵渲染树在浏览器窗口中进行绘制。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;以下这张图（http图解中的）可以诠释1、2过程：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/http.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;http&quot;&gt;http报文&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/http1.jpeg&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/http2.jpeg&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/http3.jpeg&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;http://7xnl4q.com1.z0.glb.clouddn.com/http4.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 29 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:3000/2016/11/29/http-reading/</link>
-        <guid isPermaLink="true">http://localhost:3000/2016/11/29/http-reading/</guid>
         
         <category>Others</category>
         
