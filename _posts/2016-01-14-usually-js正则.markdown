@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Js常用正则
-date:       2016-1-14 14:12:00
+date:       2016-01-14 14:12:00
 tags:
     - JavaScript
 ---

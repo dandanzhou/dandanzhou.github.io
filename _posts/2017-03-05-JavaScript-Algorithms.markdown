@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      JS常用排序算法总结
-date:       2017-3-5
+date:       2017-03-05
 tags:
     - JavaScript
 ---	

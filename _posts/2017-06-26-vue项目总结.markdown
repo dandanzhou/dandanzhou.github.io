@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      vue项目总结
-date:       2017-6-26
+date:       2017-06-26
 tags:
    - Vue
 ---	

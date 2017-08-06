@@ -1,0 +1,30 @@
+---
+layout:     post
+title:      近期项目总结
+date:       2017-08-06
+tags:
+   - JavaScript
+---	
+
+前两个星期接到一个需求：仿照阿里云做一个类似机器学习平台的项目。当时一脸懵逼，主要是以前没做过类似的东西，脑海里面还没有任何思路，以为自己完成不了这个东西。但两个星期后的今天，大概的东西已经被我完成了，期间收获还是挺多的~~
+
+收获一：让我产生了接受挑战的欲望    
+
+    很多事情，不是我们一开始就会的，是我们不断尝试，不断总结收获的。当你遇到问题的时候就是你进步的时候
+
+收获二：能运用Jsplumb实现产品提的需求
+
+    1、开始项目前，其实纠结了一会，到底用不用vue，后来还是决定用了，本身npm下载的Jsplumb不是特别满足产品提出的需求，然后不得不读它的源码，然后更改它的源码，最后满足了产品提出的需求
+    2、比较有用的资料：http://www.cnblogs.com/leomYili/p/6346526.html
+
+收获三：掌握了拖拽和右击事件
+
+    1、拖拽方面得注意几个兼容性方面的问题
+        一是IE中dragStart，用dataTransfer.setData(value1, value2)时value1得是'text'
+        二是firefox中dataTransfer.setData.effectAllowed = 'move'和dataTransfer.setDragImage(ele.target, 0, 0)一定要设置
+    2、右击事件
+        一是要阻止默认事件event.preventDefault()
+        二是它的方法contextmenu
+
+
+最后给大家展示下大概雏形的实现：[http://dandanzhou.com/](http://dandanzhou.com/)

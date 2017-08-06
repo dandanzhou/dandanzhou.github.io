@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      webpack打包工具
-date:       2016-8-4
+date:       2016-08-04
 tags:
     - Others
 ---	

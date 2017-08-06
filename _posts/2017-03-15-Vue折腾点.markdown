@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Vue实践中的几个折腾点
-date:       2017-3-15
+date:       2017-03-15
 tags:
     - Vue
 ---	

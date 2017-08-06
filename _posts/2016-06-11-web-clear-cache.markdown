@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      web静态资源缓存自动更新
-date:       2016-6-11
+date:       2016-06-11
 tags:
     - Others
 ---	
